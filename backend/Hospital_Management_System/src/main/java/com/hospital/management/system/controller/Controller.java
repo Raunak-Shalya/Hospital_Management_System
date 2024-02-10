@@ -17,10 +17,16 @@ public class Controller {
     @Autowired
     private HospitalService hospitalService;
     
-    @PostMapping
+    public Controller(HospitalService hospitalService) {
+		super();
+		this.hospitalService = hospitalService;
+	}
+
+	@PostMapping
     public ResponseEntity<Hospital> registerHospital( @RequestBody Hospital hospital) {
         try {
             Hospital savedHospital = hospitalService.addHospital(hospital);
+            System.out.print(savedHospital);
             return new ResponseEntity<>(savedHospital, HttpStatus.CREATED);
         } catch (Exception e) {
             // Handle specific exceptions with appropriate HTTP status codes and error messages
@@ -66,8 +72,5 @@ public class Controller {
         }
     }
 
-    // Consider adding other endpoints as needed:
-    // @GetMapping: Pagination, filtering, searching
-    // @PatchMapping: Partial updates
 
 }

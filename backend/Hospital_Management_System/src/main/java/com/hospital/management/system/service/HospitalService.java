@@ -19,39 +19,41 @@ import com.hospital.management.system.repository.HospitalRepo;
 public class HospitalService {
 
 	@Autowired
-	private HospitalRepo repo;
-	
-	
+	private HospitalRepo hospitalRepo;
+
+	public HospitalService(HospitalRepo hospitalRepo) {
+		this.hospitalRepo = hospitalRepo;
+	}
+
+
 	public Hospital addHospital(Hospital e) {
-		repo.save(e);
+		System.out.println(e);
+		this.hospitalRepo.save(e);
 		return e;
 	}
 	
 
 	public List<Hospital> getAllHospital() {
-		return repo.findAll();
+		return hospitalRepo.findAll();
 	}
 
-	public Hospital getHospitalById(int id) {
+	public Hospital getHospitalById(long id) {
 		System.out.print(id);
-		Optional<Hospital> e = repo.findById(id);
-		if (e.isPresent()) {
-			return e.get();
-		}
-		return null;
+		Optional<Hospital> e = hospitalRepo.findById(id);
+		return e.orElse(null);
 	}
 
-	public void deleteHospital(int id) {
-		repo.deleteById(id);
+	public void deleteHospital(long id) {
+		hospitalRepo.deleteById(id);
 	}
 	
 	public Hospital updateHospital(Hospital hospital) {
-	    return repo.save(hospital); 
+	    return hospitalRepo.save(hospital);
 	}
 
 	public Page<Hospital> getHospitalByPaginate(int currentPage, int size) {
 		Pageable p = PageRequest.of(currentPage, size);
-		return repo.findAll(p);
+		return hospitalRepo.findAll(p);
 	}
 	
 }

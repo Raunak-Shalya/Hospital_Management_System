@@ -8,6 +8,6 @@ import com.hospital.management.system.entity.Hospital;
 
 
 @Repository
-public interface HospitalRepo  extends JpaRepository<Hospital, Integer>{
+public interface HospitalRepo  extends JpaRepository<Hospital, Long>{
 
 }
