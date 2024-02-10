@@ -27,7 +27,6 @@ public class HospitalService {
 
 
 	public Hospital addHospital(Hospital e) {
-		System.out.println(e);
 		this.hospitalRepo.save(e);
 		return e;
 	}
@@ -38,7 +37,6 @@ public class HospitalService {
 	}
 
 	public Hospital getHospitalById(long id) {
-		System.out.print(id);
 		Optional<Hospital> e = hospitalRepo.findById(id);
 		return e.orElse(null);
 	}
@@ -47,8 +45,24 @@ public class HospitalService {
 		hospitalRepo.deleteById(id);
 	}
 	
-	public Hospital updateHospital(Hospital hospital) {
-	    return hospitalRepo.save(hospital);
+	public Hospital updateHospital(Hospital hospital,long id) throws Exception {
+		Hospital existingHospital = hospitalRepo.findById(id).orElse(null); // Check if hospital exists
+
+	    if (existingHospital == null) {
+	        throw new Exception("Hospital with ID " + id + " not found");
+	    }
+
+	    // Update fields selectively (avoid overwriting all fields)
+	    existingHospital.setHospitalName(hospital.getHospitalName());
+	    existingHospital.setHospitalAddress(hospital.getHospitalAddress());
+	    existingHospital.setName1(hospital.getName1());
+	    existingHospital.setEmail1(hospital.getEmail1());
+	    existingHospital.setContactNo1(hospital.getContactNo1());
+	    existingHospital.setName2(hospital.getName2());
+	    existingHospital.setEmail2(hospital.getEmail2());
+	    existingHospital.setContactNo2(hospital.getContactNo2());
+
+	    return hospitalRepo.save(existingHospital);
 	}
 
 	public Page<Hospital> getHospitalByPaginate(int currentPage, int size) {

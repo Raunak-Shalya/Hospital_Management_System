@@ -26,7 +26,6 @@ public class Controller {
     public ResponseEntity<Hospital> registerHospital( @RequestBody Hospital hospital) {
         try {
             Hospital savedHospital = hospitalService.addHospital(hospital);
-            System.out.print(savedHospital);
             return new ResponseEntity<>(savedHospital, HttpStatus.CREATED);
         } catch (Exception e) {
             // Handle specific exceptions with appropriate HTTP status codes and error messages
@@ -35,7 +34,7 @@ public class Controller {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Hospital> getHospitalById(@PathVariable int id) {
+    public ResponseEntity<Hospital> getHospitalById(@PathVariable long id) {
         try {
             Hospital hospital = hospitalService.getHospitalById(id);
             if (hospital == null) {
@@ -48,9 +47,10 @@ public class Controller {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Hospital> updateHospital(@PathVariable int id, Hospital hospital) {
+    public ResponseEntity<Hospital> updateHospital(@PathVariable long id,@RequestBody Hospital hospital) {
+    	System.out.print(id);
         try {
-            Hospital updatedHospital = hospitalService.updateHospital(hospital);
+            Hospital updatedHospital = hospitalService.updateHospital(hospital,id);
             if (updatedHospital == null) {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
@@ -62,7 +62,7 @@ public class Controller {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteHospital(@PathVariable int id) {
+    public ResponseEntity<?> deleteHospital(@PathVariable long id) {
         try {
             hospitalService.deleteHospital(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Avoid returning null
@@ -71,6 +71,5 @@ public class Controller {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
 
 }
