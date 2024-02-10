@@ -1,4 +1,4 @@
-package com.deeptek.Hospital.Management.System;
+package com.hospital.management.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,13 +1,10 @@
 .navbarx {
-  background: rgb(3, 1, 63);
+  background: rgb(16, 24, 29);
   background: radial-gradient(
     circle,
-    rgba(3, 1, 63, 1) 0%,
-    rgba(2, 0, 36, 1) 2%,
-    rgba(5, 3, 107, 1) 28%,
-    rgba(8, 8, 207, 1) 51%,
-    rgba(8, 7, 192, 1) 61%,
-    rgba(7, 6, 176, 1) 74%,
-    rgba(0, 212, 255, 1) 97%
+    rgba(16, 24, 29, 1) 21%,
+    rgba(35, 73, 96, 1) 50%,
+    rgba(16, 24, 29, 1) 68%,
+    rgba(4, 25, 44, 1) 88%
   );
 }

@@ -1,4 +1,4 @@
-package com.deeptek.Hospital.Management.System;
+package com.hospital.management.system;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
