@@ -64,6 +64,8 @@ public class HospitalService {
 
 	    return hospitalRepo.save(existingHospital);
 	}
+	
+	
 
 	public Page<Hospital> getHospitalByPaginate(int currentPage, int size) {
 		Pageable p = PageRequest.of(currentPage, size);

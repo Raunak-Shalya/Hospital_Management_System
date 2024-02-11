@@ -6,6 +6,8 @@ import com.hospital.management.system.service.HospitalService;
 import org.hibernate.query.NativeQuery.ReturnableResultNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +46,11 @@ public class Controller {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+    
+    @GetMapping("/page/{page}")
+    public Page<Hospital> getHospitalsByPage(@PathVariable int page, @PageableDefault(size = 5) Pageable pageable) {
+        return hospitalService.getHospitalByPaginate(page, pageable.getPageSize());
     }
 
     @PutMapping("/{id}")
