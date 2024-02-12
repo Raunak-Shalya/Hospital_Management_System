@@ -18,7 +18,7 @@ const Home = () => {
       }
     };
     fetchdata();
-  }, []);
+  }, [Hospitals]);
 
   return (
     <div className="box">

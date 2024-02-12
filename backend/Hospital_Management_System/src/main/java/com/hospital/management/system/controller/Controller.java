@@ -3,6 +3,8 @@ package com.hospital.management.system.controller;
 import com.hospital.management.system.entity.Hospital;
 import com.hospital.management.system.service.HospitalService;
 
+import java.util.List;
+
 import org.hibernate.query.NativeQuery.ReturnableResultNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -51,6 +53,20 @@ public class Controller {
     @GetMapping("/page/{page}")
     public Page<Hospital> getHospitalsByPage(@PathVariable int page, @PageableDefault(size = 5) Pageable pageable) {
         return hospitalService.getHospitalByPaginate(page, pageable.getPageSize());
+    }
+    
+    @GetMapping("/sortByNameAsc")
+    public List<Hospital> findAllRadiologistsSortedByNameAsc() {
+        return hospitalService.findAllHospitalSortedByNameAsc();
+    }
+    
+    @GetMapping("/sortByNameId")
+    public List<Hospital> findAllRadiologistsSortedByNameId() {
+        return hospitalService.findAllHospitalSortedByNameId();
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<Hospital>> searchProducts(@RequestParam("query") String query){
+        return ResponseEntity.ok(hospitalService.searchHospital(query));
     }
 
     @PutMapping("/{id}")

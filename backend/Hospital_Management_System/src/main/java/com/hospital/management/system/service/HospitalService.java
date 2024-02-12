@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.hospital.management.system.entity.Hospital;
@@ -65,11 +66,22 @@ public class HospitalService {
 	    return hospitalRepo.save(existingHospital);
 	}
 	
+	public List<Hospital> findAllHospitalSortedByNameAsc(){
+		return hospitalRepo.findAll(Sort.by(Sort.Direction.ASC, "hospitalName"));
+	}
 	
+	public List<Hospital> findAllHospitalSortedByNameId(){
+		return hospitalRepo.findAll(Sort.by(Sort.Direction.ASC, "Id"));
+	}
 
 	public Page<Hospital> getHospitalByPaginate(int currentPage, int size) {
 		Pageable p = PageRequest.of(currentPage, size);
 		return hospitalRepo.findAll(p);
+	}
+
+
+	public List<Hospital> searchHospital(String query) {
+		return hospitalRepo.findByhospitalName(query);
 	}
 	
 }
