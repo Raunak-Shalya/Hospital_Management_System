@@ -1,0 +1,88 @@
+.HospitalBox-box {
+  outline-style: solid;
+  outline-color: white;
+  outline-width: 2px;
+  width: auto;
+  margin: 0px 3px 0px 3px;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.HospitalBox_id {
+  font-size: large;
+  font-size: 25px;
+  width: 20%;
+  height: 100%;
+  padding-top: 10px;
+  text-align: center;
+}
+.HospitalBox_id:hover {
+  transform: scale(1.25);
+}
+
+.HospitalBox_name {
+  font-size: 25px;
+  height: 100%;
+  width: 30%;
+  padding-top: 10px;
+  text-align: center;
+}
+.HospitalBox_name:hover {
+  transform: scale(1.25);
+}
+
+.btn-one {
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
+  margin-left: 20%;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+}
+.btn-one span {
+  transition: all 0.3s;
+}
+.btn-one::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.1, 1);
+}
+.btn-one:hover span {
+  letter-spacing: 2px;
+}
+.btn-one:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+.btn-one::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.btn-one:hover::after {
+  opacity: 0;
+  transform: scale(0.1, 1);
+}
