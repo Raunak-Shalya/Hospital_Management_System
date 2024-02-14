@@ -3,6 +3,7 @@ import "../styles/Home.scss";
 import NavBar from "../components/Navbar";
 import axios from "axios";
 import HospitalBox from "../components/HospitalBox";
+import ToolBar from "../components/ToolBar";
 const baseURL = "http://localhost:8080";
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
     <div className="box">
       <NavBar />
       <div className="homebox">
-        <button className="button-71">+ Add</button>
+        <ToolBar />
         <div className="HospitalsList">
           {Hospitals.map((Hospital) => (
             <HospitalBox Hospital={Hospital} key={Hospital.id} />

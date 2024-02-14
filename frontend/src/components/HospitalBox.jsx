@@ -5,7 +5,7 @@ const HospitalBox = (props) => {
     <div className="HospitalBox-box">
       <div className="HospitalBox_id">{props.Hospital.id}</div>
       <div className="HospitalBox_name">{props.Hospital.hospitalName}</div>
-      <div class="btn btn-one">
+      <div className="btn btn-one">
         <span>Edit</span>
       </div>
     </div>
