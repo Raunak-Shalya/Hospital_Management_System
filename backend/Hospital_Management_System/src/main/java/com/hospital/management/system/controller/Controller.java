@@ -50,17 +50,12 @@ public class Controller {
         }
     }
     
-    @GetMapping("/page/{page}")
-    public Page<Hospital> getHospitalsByPage(@PathVariable int page, @PageableDefault(size = 5) Pageable pageable) {
-        return hospitalService.getHospitalByPaginate(page, pageable.getPageSize());
-    }
-    
-    @GetMapping("/sortByNameAsc")
+    @GetMapping("/sortByName")
     public List<Hospital> findAllRadiologistsSortedByNameAsc() {
         return hospitalService.findAllHospitalSortedByNameAsc();
     }
     
-    @GetMapping("/sortByNameId")
+    @GetMapping("/sortById")
     public List<Hospital> findAllRadiologistsSortedByNameId() {
         return hospitalService.findAllHospitalSortedByNameId();
     }

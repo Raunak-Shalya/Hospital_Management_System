@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/toolbar.css";
-const ToolBar = () => {
+const ToolBar = (props) => {
+  const SetDisplayByName = () => {
+    props.setDisplayBy("Name");
+  };
+  const SetDisplayById = () => {
+    props.setDisplayBy("Id");
+  };
   return (
     <div className="ToolBarComponent">
       <div className="SearchComponent">
@@ -12,8 +18,8 @@ const ToolBar = () => {
         <div className="dropdown">
           <button className="dropbtn">SortBy</button>
           <div className="dropdown-content">
-            <a>Name</a>
-            <a>ID</a>
+            <a onClick={SetDisplayByName}>Name</a>
+            <a onClick={SetDisplayById}> Id</a>
           </div>
         </div>
       </div>

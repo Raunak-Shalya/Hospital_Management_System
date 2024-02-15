@@ -74,11 +74,6 @@ public class HospitalService {
 		return hospitalRepo.findAll(Sort.by(Sort.Direction.ASC, "Id"));
 	}
 
-	public Page<Hospital> getHospitalByPaginate(int currentPage, int size) {
-		Pageable p = PageRequest.of(currentPage, size);
-		return hospitalRepo.findAll(p);
-	}
-
 
 	public List<Hospital> searchHospital(String query) {
 		return hospitalRepo.findByhospitalName(query);
