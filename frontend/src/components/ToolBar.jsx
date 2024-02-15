@@ -7,10 +7,18 @@ const ToolBar = (props) => {
   const SetDisplayById = () => {
     props.setDisplayBy("Id");
   };
+
+  const handleChangeSearchBar = (e) => {
+    props.setSearchBox(e.target.value);
+  };
   return (
     <div className="ToolBarComponent">
       <div className="SearchComponent">
-        <input className="SearchBox" placeholder="Search Hospital"></input>
+        <input
+          className="SearchBox"
+          placeholder="Search Hospital"
+          onChange={handleChangeSearchBar}
+        ></input>
         <button className="SearchButton">Search</button>
       </div>
 
