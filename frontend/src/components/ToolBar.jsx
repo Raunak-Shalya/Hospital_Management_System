@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/toolbar.css";
+
 const ToolBar = (props) => {
   const SetDisplayByName = () => {
     props.setDisplayBy("Name");
@@ -10,6 +12,10 @@ const ToolBar = (props) => {
 
   const handleChangeSearchBar = (e) => {
     props.setSearchBox(e.target.value);
+  };
+
+  const OnClickHandlerAddButton = () => {
+    navigate(`/Add`);
   };
   return (
     <div className="ToolBarComponent">
@@ -32,7 +38,9 @@ const ToolBar = (props) => {
         </div>
       </div>
 
-      <button className="button-71">+ Add</button>
+      <button className="button-71" onClick={OnClickHandlerAddButton}>
+        + Add
+      </button>
     </div>
   );
 };
