@@ -3,6 +3,7 @@ package com.hospital.management.system.controller;
 import com.hospital.management.system.entity.Hospital;
 import com.hospital.management.system.service.HospitalService;
 
+import java.io.Console;
 import java.util.List;
 
 import org.hibernate.query.NativeQuery.ReturnableResultNode;
@@ -28,6 +29,7 @@ public class Controller {
 
 	@PostMapping
     public ResponseEntity<Hospital> registerHospital( @RequestBody Hospital hospital) {
+	    System.out.print(hospital.getHospitalName());
         try {
             Hospital savedHospital = hospitalService.addHospital(hospital);
             return new ResponseEntity<>(savedHospital, HttpStatus.CREATED);
@@ -66,7 +68,6 @@ public class Controller {
 
     @PutMapping("/{id}")
     public ResponseEntity<Hospital> updateHospital(@PathVariable long id,@RequestBody Hospital hospital) {
-    	System.out.print(id);
         try {
             Hospital updatedHospital = hospitalService.updateHospital(hospital,id);
             if (updatedHospital == null) {

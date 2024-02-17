@@ -4,7 +4,9 @@ import "../styles/HospitalBox.css";
 const HospitalBox = (props) => {
   const navigate = useNavigate();
   const handleEditClick = () => {
-    navigate(`/edit/${props.Hospital.id}`);
+    navigate(`/edit/${props.Hospital.id}`, {
+      state: { Hospital: props.Hospital },
+    });
   };
   return (
     <div className="HospitalBox-box">

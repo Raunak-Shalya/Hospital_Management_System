@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/toolbar.css";
 
 const ToolBar = (props) => {
+  const navigate = useNavigate();
   const SetDisplayByName = () => {
     props.setDisplayBy("Name");
   };
