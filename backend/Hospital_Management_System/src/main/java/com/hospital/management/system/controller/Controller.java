@@ -29,7 +29,6 @@ public class Controller {
 
 	@PostMapping
     public ResponseEntity<Hospital> registerHospital( @RequestBody Hospital hospital) {
-	    System.out.print(hospital.getHospitalName());
         try {
             Hospital savedHospital = hospitalService.addHospital(hospital);
             return new ResponseEntity<>(savedHospital, HttpStatus.CREATED);
