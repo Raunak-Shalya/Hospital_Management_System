@@ -8,15 +8,20 @@ const HospitalBox = (props) => {
       state: { Hospital: props.Hospital },
     });
   };
+  const handleViewClick = () => {
+    navigate(`/view/${props.Hospital.id}`, {
+      state: { Hospital: props.Hospital },
+    });
+  };
   return (
     <div className="HospitalBox-box">
       <div className="HospitalBox_id">{props.Hospital.id}</div>
       <div className="HospitalBox_name">{props.Hospital.hospitalName}</div>
       <div className="button-container">
-        <div className="btn btn-one">
+        <div className="btn btn-one" onClick={handleViewClick}>
           <span>View</span>
         </div>
-        <div onClick={handleEditClick} className="btn btn-one">
+        <div className="btn btn-one" onClick={handleEditClick}>
           <span>Edit</span>
         </div>
         <div className="btn btn-one">
