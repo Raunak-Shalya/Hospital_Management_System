@@ -1,7 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/LoginPage.css";
+import { auth } from "../components/Fb";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log(userCredential);
+      const user = userCredential.user;
+      localStorage.setItem("token", user.accessToken);
+      localStorage.setItem("user", JSON.stringify(user));
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <div className="c1">
       <div className="container">
@@ -9,22 +34,32 @@ const LoginPage = () => {
           <h1>Login</h1>
 
           <div className="input-box">
-            <input type="text" placeholder="username" required />
+            <input
+              type="text"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
             <i className="bx bxs-user"></i>
           </div>
           <div className="input-box">
-            <input type="password" placeholder="password" required />
+            <input
+              type="password"
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
             <i className="bx bxs-lock-alt"></i>
           </div>
 
-          <div className="remember-forgot">
+          {/* <div className="remember-forgot">
             <label>
               <input type="checkbox" /> Remember me
             </label>
             <a href="#">Forgot password?</a>
-          </div>
+          </div> */}
 
-          <button type="submit" className="btn">
+          <button type="submit" className="btn" onClick={handleSubmit}>
             Login
           </button>
 

@@ -6,25 +6,28 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
+import { auth } from "./Fb";
+import { signOut } from "firebase/auth";
 export default function NavBar() {
+  const navigate = useNavigate();
+  const LogoutHandler = async () => {
+    await signOut(auth);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" className="navbarx">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Deeptek
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button color="inherit" onClick={LogoutHandler}>
+            Logout
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
