@@ -76,7 +76,8 @@ public class HospitalService {
 
 
 	public List<Hospital> searchHospital(String query) {
-		return hospitalRepo.findByhospitalName(query);
+		List<Hospital> val = hospitalRepo.findByNameStartsWith(query);
+		return val;
 	}
 	
 }
