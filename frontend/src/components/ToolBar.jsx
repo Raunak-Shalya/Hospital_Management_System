@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../styles/toolbar.css";
+import HospitalAdd from "../pages/HospitalAdd";
 
 const ToolBar = (props) => {
-  const navigate = useNavigate();
+  const [AddModal, setAddModal] = useState(false);
   const SetDisplayByName = () => {
     props.setDisplayBy("Name");
   };
@@ -16,7 +16,7 @@ const ToolBar = (props) => {
   };
 
   const OnClickHandlerAddButton = () => {
-    navigate(`/Add`);
+    setAddModal(true);
   };
   return (
     <div className="ToolBarComponent">
@@ -42,6 +42,7 @@ const ToolBar = (props) => {
       <button className="button-71" onClick={OnClickHandlerAddButton}>
         + Add
       </button>
+      {AddModal && <HospitalAdd setAddModal={setAddModal} />}
     </div>
   );
 };

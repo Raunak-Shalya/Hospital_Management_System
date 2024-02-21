@@ -1,10 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { useState } from "react";
-import NavBar from "../components/Navbar";
 import "../styles/HospitalAddEdit.css";
 
-const HospitalAdd = () => {
+const HospitalAdd = (props) => {
   let Hospital = {
     hospitalName: "",
     hospitalAddress: "",
@@ -42,96 +40,101 @@ const HospitalAdd = () => {
   };
 
   const submitHandler = () => {
-    console.log(Hospital);
+    props.setAddModal(false);
     axios.post(`http://localhost:8080/`, Hospital).catch((err) => {
       console.log(err);
     });
   };
   return (
-    <div>
-      <div className="box">
-        <NavBar />
-        <div className="homebox">
-          <div className="HospitalEditBox">
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">Hospital Name</div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.hospitalName}
-                onChange={hospitalNameChange}
-              ></input>
-            </div>
+    <div className="modalBackground">
+      <div className="modalContainer">
+        <div
+          className="btn-one-edit-close"
+          onClick={() => {
+            props.setAddModal(false);
+          }}
+        >
+          <span>X</span>
+        </div>
+        <div className="HospitalEditBox">
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">Hospital Name</div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.hospitalName}
+              onChange={hospitalNameChange}
+            ></input>
+          </div>
 
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">Hospital Address</div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.hospitalAddress}
-                onChange={hospitalAddressChange}
-              ></input>
-            </div>
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">Hospital Address</div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.hospitalAddress}
+              onChange={hospitalAddressChange}
+            ></input>
+          </div>
 
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">First Person Name</div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.name1}
-                onChange={name1Change}
-              ></input>
-            </div>
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">First Person Name</div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.name1}
+              onChange={name1Change}
+            ></input>
+          </div>
 
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">First Person Email</div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.email1}
-                onChange={email1Change}
-              ></input>
-            </div>
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">First Person Email</div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.email1}
+              onChange={email1Change}
+            ></input>
+          </div>
 
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">
-                First Person Contact No.
-              </div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.contactNo1}
-                onChange={contactNo1Change}
-              ></input>
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">
+              First Person Contact No.
             </div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.contactNo1}
+              onChange={contactNo1Change}
+            ></input>
+          </div>
 
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">Second Person Name</div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.name2}
-                onChange={name2Change}
-              ></input>
-            </div>
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">Second Person Name</div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.name2}
+              onChange={name2Change}
+            ></input>
+          </div>
 
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">Second Person Email</div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.email2}
-                onChange={email2Change}
-              ></input>
-            </div>
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">Second Person Email</div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.email2}
+              onChange={email2Change}
+            ></input>
+          </div>
 
-            <div className="HospitalEditEntryBox">
-              <div className="HospitalEditEntryName">
-                Second Person Contact No.
-              </div>
-              <input
-                className="HospitalEditEntryInput"
-                defaultValue={Hospital.contactNo2}
-                onChange={contactNo2Change}
-              ></input>
+          <div className="HospitalEditEntryBox">
+            <div className="HospitalEditEntryName">
+              Second Person Contact No.
             </div>
+            <input
+              className="HospitalEditEntryInput"
+              defaultValue={Hospital.contactNo2}
+              onChange={contactNo2Change}
+            ></input>
+          </div>
 
-            <div className="btn btn-one-edit" onClick={submitHandler}>
-              <span>Submit</span>
-            </div>
+          <div className="btn btn-one-edit" onClick={submitHandler}>
+            <span>Submit</span>
           </div>
         </div>
       </div>
