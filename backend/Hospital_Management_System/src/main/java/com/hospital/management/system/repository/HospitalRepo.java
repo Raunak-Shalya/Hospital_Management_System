@@ -18,4 +18,7 @@ public interface HospitalRepo  extends JpaRepository<Hospital, Long>{
 	
 	@Query("SELECT h FROM Hospital h WHERE LOWER(h.hospitalName) LIKE CONCAT(LOWER(:query), '%')")
 	List<Hospital> findByNameStartsWith(@Param("query") String query);
+	
+	@Query("SELECT h FROM Hospital h WHERE CAST(h.id AS String) LIKE CONCAT(:query, '%')")
+	List<Hospital> findByIDStartsWith(@Param("query") String query);
 }

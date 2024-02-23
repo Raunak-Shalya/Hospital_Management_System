@@ -60,9 +60,13 @@ public class Controller {
     public List<Hospital> findAllRadiologistsSortedByNameId() {
         return hospitalService.findAllHospitalSortedByNameId();
     }
-    @GetMapping("/search")
-    public ResponseEntity<List<Hospital>> searchProducts(@RequestParam("query") String query){
-        return ResponseEntity.ok(hospitalService.searchHospital(query));
+    @GetMapping("/SearchByName")
+    public ResponseEntity<List<Hospital>> searchProductsbyName(@RequestParam("query") String query){
+        return ResponseEntity.ok(hospitalService.searchHospitalName(query));
+    }
+    @GetMapping("/SearchByID")
+    public ResponseEntity<List<Hospital>> searchProductsbyID(@RequestParam("query") String query){
+        return ResponseEntity.ok(hospitalService.searchHospitalID(query));
     }
 
     @PutMapping("/{id}")

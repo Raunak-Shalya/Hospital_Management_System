@@ -11,6 +11,8 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
+    if (email == "") windows.alert("Enter Email To Login");
+    if (password == "") windows.alert("Enter Password To Login");
     e.preventDefault();
     try {
       const userCredential = await signInWithEmailAndPassword(
@@ -18,13 +20,12 @@ const LoginPage = () => {
         email,
         password
       );
-      console.log(userCredential);
       const user = userCredential.user;
       localStorage.setItem("token", user.accessToken);
       localStorage.setItem("user", JSON.stringify(user));
       navigate("/");
     } catch (error) {
-      console.error(error);
+      alert("Invalid Username or Password");
     }
   };
   return (
@@ -63,11 +64,11 @@ const LoginPage = () => {
             Login
           </button>
 
-          <div className="register-link">
+          {/* <div className="register-link">
             <p>
               Don't have an account? <a href="#">Register here!</a>
             </p>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>

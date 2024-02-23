@@ -10,6 +10,8 @@ const Home = () => {
   const [Hospitals, setHospitals] = useState([]);
   const [DisplayBy, setDisplayBy] = useState("Id");
   const [PageNo, setPageNo] = useState(1);
+  const [Added, setAdded] = useState(0);
+
   let CurHospitals;
   //Variables for Implementing Pagination
   const totalPages = Math.ceil(Hospitals.length / 6);
@@ -30,7 +32,7 @@ const Home = () => {
       }
     };
     fetchdata();
-  }, [DisplayBy, PageNo]);
+  }, [DisplayBy, PageNo, Added]);
 
   const PageNoDec = () => {
     if (PageNo != 1) setPageNo(PageNo - 1);
@@ -49,6 +51,8 @@ const Home = () => {
           setDisplayBy={setDisplayBy}
           setHospitals={setHospitals}
           Hospitals={Hospitals}
+          Added={Added}
+          setAdded={setAdded}
         />
         <div className="HospitalsList">
           {CurHospitals.map((Hospital) => (

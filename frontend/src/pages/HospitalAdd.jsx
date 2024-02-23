@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "../styles/HospitalAddEdit.css";
+import validator, { isAlpha, isEmail, isMobilePhone } from "validator";
+import Home from "./Home";
 
 const HospitalAdd = (props) => {
   let Hospital = {
@@ -40,10 +42,76 @@ const HospitalAdd = (props) => {
   };
 
   const submitHandler = () => {
+    if (Hospital.hospitalName == "") {
+      alert("Enter Hospital Name");
+      return;
+    }
+    if (!isAlpha(Hospital.hospitalName)) {
+      alert("Hospital Name Invalid");
+      return;
+    }
+    if (Hospital.hospitalAddress == "") {
+      alert("Enter Hopsital Address");
+      return;
+    }
+    if (Hospital.name1 == "") {
+      alert("Enter First Person Name");
+      return;
+    }
+    if (!isAlpha(Hospital.name1)) {
+      alert("First Person Name Invalid");
+      return;
+    }
+    if (Hospital.email1 == "") {
+      alert("Enter First Person Email");
+      return;
+    }
+    if (!isEmail(Hospital.email1)) {
+      alert("First Person Email Invalid");
+      return;
+    }
+    if (Hospital.contactNo1 == "") {
+      alert("Enter First Person Contact No.");
+      return;
+    }
+    if (!isMobilePhone(Hospital.contactNo1)) {
+      alert("First Person Contact No. Invalid");
+      return;
+    }
+    if (Hospital.name2 == "") {
+      alert("Enter Second Person Name");
+      return;
+    }
+    if (!isAlpha(Hospital.name2)) {
+      alert("Second Person Name Invalid");
+      return;
+    }
+    if (Hospital.email2 == "") {
+      alert("Enter Second Person Email");
+      return;
+    }
+    if (!isEmail(Hospital.email2)) {
+      alert("Second Person Email Invalid");
+      return;
+    }
+    if (Hospital.contactNo2 == "") {
+      alert("Enter Second Person Contact No.");
+      return;
+    }
+    if (!isMobilePhone(Hospital.contactNo2)) {
+      alert("Second Person Contact No. Invalid");
+      return;
+    }
     props.setAddModal(false);
-    axios.post(`http://localhost:8080/`, Hospital).catch((err) => {
-      console.log(err);
-    });
+    try {
+      axios.post(`http://localhost:8080/`, Hospital).catch((err) => {
+        console.log(err);
+      });
+      alert(`Hospital: ${Hospital.hospitalName} has been added`);
+      props.setAdded(props.Added + 1);
+    } catch (e) {
+      alert(e);
+    }
   };
   return (
     <div className="modalBackground">

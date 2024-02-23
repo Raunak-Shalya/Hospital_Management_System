@@ -5,7 +5,8 @@ import axios from "axios";
 
 const ToolBar = (props) => {
   const [AddModal, setAddModal] = useState(false);
-  const [SearchBox, setSearchBox] = useState("");
+  const [SearchBoxName, setSearchBoxName] = useState("");
+  const [SearchBoxID, setSearchBoxID] = useState("");
   const SetDisplayByName = () => {
     props.setDisplayBy("Name");
   };
@@ -13,8 +14,12 @@ const ToolBar = (props) => {
     props.setDisplayBy("Id");
   };
 
-  const handleChangeSearchBar = (e) => {
-    setSearchBox(e.target.value);
+  const handleChangeSearchBarName = (e) => {
+    setSearchBoxName(e.target.value);
+  };
+
+  const handleChangeSearchBarID = (e) => {
+    setSearchBoxID(e.target.value);
   };
 
   const OnClickHandlerAddButton = () => {
@@ -22,38 +27,57 @@ const ToolBar = (props) => {
   };
 
   //Searching By Name
-  const SearchFunction = async () => {
+  const SearchFunctionName = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/search", {
+      const response = await axios.get("http://localhost:8080/SearchByName", {
         params: {
-          query: SearchBox,
+          query: SearchBoxName,
         },
       });
-      // console.log(response);
       props.setHospitals(response.data);
-      // console.log(props.CurHospitals);
-      // props.CurHospitals = props.Hospitals;
-      // console.log(CurHospitals);
     } catch (error) {
       console.log("Error in retrieving data from backend for Searching");
     }
   };
 
-  const HandleKeyDown = (e) => {
-    if (e.key === "Enter") SearchFunction();
+  //Searching By ID
+  const SearchFunctionID = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/SearchByID", {
+        params: {
+          query: SearchBoxID,
+        },
+      });
+      props.setHospitals(response.data);
+    } catch (error) {
+      console.log("Error in retrieving data from backend for Searching");
+    }
+  };
+
+  const HandleKeyDownName = (e) => {
+    if (e.key === "Enter") SearchFunctionName();
+  };
+  const HandleKeyDownID = (e) => {
+    if (e.key === "Enter") SearchFunctionID();
   };
   return (
     <div className="ToolBarComponent">
       <div className="SearchComponent">
         <input
           className="SearchBox"
-          placeholder="Search Hospital"
-          onChange={handleChangeSearchBar}
-          onKeyDown={HandleKeyDown}
+          placeholder="Search Hospital Name"
+          onChange={handleChangeSearchBarName}
+          onKeyDown={HandleKeyDownName}
         ></input>
-        <button className="SearchButton" onClick={SearchFunction}>
+        <input
+          className="SearchBox"
+          placeholder="Search Hospital ID"
+          onChange={handleChangeSearchBarID}
+          onKeyDown={HandleKeyDownID}
+        ></input>
+        {/* <button className="SearchButton" onClick={SearchFunctionID}>
           Search
-        </button>
+        </button> */}
       </div>
 
       <div className="SortComponent">
@@ -69,7 +93,13 @@ const ToolBar = (props) => {
       <button className="button-71" onClick={OnClickHandlerAddButton}>
         + Add
       </button>
-      {AddModal && <HospitalAdd setAddModal={setAddModal} />}
+      {AddModal && (
+        <HospitalAdd
+          setAddModal={setAddModal}
+          Added={props.Added}
+          setAdded={props.setAdded}
+        />
+      )}
     </div>
   );
 };
