@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import validator, { isAlpha, isEmail, isMobilePhone } from "validator";
 import "../styles/HospitalAddEdit.css";
 
 const HospitalEdit = (props) => {
@@ -39,6 +40,66 @@ const HospitalEdit = (props) => {
   };
 
   const submitHandler = () => {
+    if (curhospitalName == "") {
+      alert("Enter Hospital Name");
+      return;
+    }
+    if (!isAlpha(curhospitalName)) {
+      alert("Hospital Name Invalid");
+      return;
+    }
+    if (curhospitalAddress == "") {
+      alert("Enter Hopsital Address");
+      return;
+    }
+    if (curname1 == "") {
+      alert("Enter First Person Name");
+      return;
+    }
+    if (!isAlpha(curname1)) {
+      alert("First Person Name Invalid");
+      return;
+    }
+    if (curemail1 == "") {
+      alert("Enter First Person Email");
+      return;
+    }
+    if (!isEmail(curemail1)) {
+      alert("First Person Email Invalid");
+      return;
+    }
+    if (curcontactNo1 == "") {
+      alert("Enter First Person Contact No.");
+      return;
+    }
+    if (!isMobilePhone(curcontactNo1)) {
+      alert("First Person Contact No. Invalid");
+      return;
+    }
+    if (curname2 == "") {
+      alert("Enter Second Person Name");
+      return;
+    }
+    if (!isAlpha(curname2)) {
+      alert("Second Person Name Invalid");
+      return;
+    }
+    if (curemail2 == "") {
+      alert("Enter Second Person Email");
+      return;
+    }
+    if (!isEmail(curemail2)) {
+      alert("Second Person Email Invalid");
+      return;
+    }
+    if (curcontactNo2 == "") {
+      alert("Enter Second Person Contact No.");
+      return;
+    }
+    if (!isMobilePhone(curcontactNo2)) {
+      alert("Second Person Contact No. Invalid");
+      return;
+    }
     props.SetEditModal(false);
     Hospital.hospitalName = curhospitalName;
     Hospital.Address = curhospitalAddress;
@@ -51,6 +112,7 @@ const HospitalEdit = (props) => {
     axios.put(`http://localhost:8080/${Hospital.id}`, Hospital).catch((err) => {
       console.log(err);
     });
+    alert(`Hospital ${Hospital.hospitalName} Updated Sucessfully`);
   };
 
   return (
