@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import "../styles/HospitalAddEdit.css";
 import validator, { isAlpha, isEmail, isMobilePhone } from "validator";
-import Home from "./Home";
 
 const HospitalAdd = (props) => {
   let Hospital = {

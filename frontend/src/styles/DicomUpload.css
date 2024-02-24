@@ -1,0 +1,125 @@
+.modalContainerUpload {
+  width: 35vw;
+  height: 30vh;
+  background-color: #1a1e28;
+  margin: auto;
+  margin-top: 5vh;
+  border-radius: 25px;
+  position: absolute;
+}
+.Select-File-Button {
+  font-size: 18px;
+  margin-top: 10%;
+  margin-left: 30%;
+}
+
+.Upload-File-Button {
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
+  text-align: center;
+  padding-top: 8px;
+  height: 40px;
+  width: 100px;
+  margin-top: 5%;
+  margin-left: 40%;
+  cursor: pointer;
+}
+.Upload-File-Button span {
+  transition: all 0.3s;
+}
+.Upload-File-Button::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.1, 1);
+}
+.Upload-File-Button:hover span {
+  letter-spacing: 2px;
+}
+.Upload-File-Button:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+.Upload-File-Button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.Upload-File-Button:hover::after {
+  opacity: 0;
+  transform: scale(0.1, 1);
+}
+
+.btn-one-upload-close {
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+  margin-top: 10px;
+  margin-left: 80%;
+  cursor: pointer;
+}
+.btn-one-upload-close span {
+  transition: all 0.3s;
+}
+.btn-one-upload-close::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.1, 1);
+}
+.btn-one-upload-close:hover span {
+  letter-spacing: 2px;
+}
+.btn-one-upload-close:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+.btn-one-upload-close::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.btn-one-upload-close:hover::after {
+  opacity: 0;
+  transform: scale(0.1, 1);
+}

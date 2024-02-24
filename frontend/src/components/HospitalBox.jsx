@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "../styles/HospitalBox.css";
 import HospitalEdit from "../pages/HospitalEdit";
 import HospitalView from "../pages/HospitalView";
+import DicomUpload from "../pages/DicomUpload";
 const HospitalBox = (props) => {
   const navigate = useNavigate();
   const [EditModal, SetEditModal] = useState(false);
   const [ViewModal, SetViewModal] = useState(false);
-
+  const [UploadModal, SetUploadModal] = useState(false);
   return (
     <div className="HospitalBox-box">
       <div className="HospitalBox_id">{props.Hospital.id}</div>
@@ -36,9 +37,20 @@ const HospitalBox = (props) => {
         {EditModal && (
           <HospitalEdit Hospital={props.Hospital} SetEditModal={SetEditModal} />
         )}
-        <div className="btn btn-one">
-          <span>Submit</span>
+        <div
+          className="btn btn-one"
+          onClick={() => {
+            SetUploadModal(true);
+          }}
+        >
+          <span>Upload</span>
         </div>
+        {UploadModal && (
+          <DicomUpload
+            SetUploadModal={SetUploadModal}
+            HospitalId={props.Hospital.id}
+          />
+        )}
       </div>
     </div>
   );

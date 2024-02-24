@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import validator, { isAlpha, isEmail, isMobilePhone } from "validator";
+import { isAlpha, isEmail, isMobilePhone } from "validator";
 import "../styles/HospitalAddEdit.css";
 
 const HospitalEdit = (props) => {
