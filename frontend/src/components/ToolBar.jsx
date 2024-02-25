@@ -28,30 +28,19 @@ const ToolBar = (props) => {
 
   //Searching By Name
   const SearchFunctionName = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/SearchByName", {
-        params: {
-          query: SearchBoxName,
-        },
-      });
-      props.setHospitals(response.data);
-    } catch (error) {
-      console.log("Error in retrieving data from backend for Searching");
-    }
+    props.setPageNo(1);
+    props.setCurHospitals(
+      props.CurHospitals.filter((h) => h.hospitalName.startsWith(SearchBoxName))
+    );
   };
 
   //Searching By ID
   const SearchFunctionID = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/SearchByID", {
-        params: {
-          query: SearchBoxID,
-        },
-      });
-      props.setHospitals(response.data);
-    } catch (error) {
-      console.log("Error in retrieving data from backend for Searching");
-    }
+    props.setPageNo(1);
+    console.log(props.Hospitals);
+    props.setCurHospitals(
+      props.CurHospitals.filter((h) => String(h.id).startsWith(SearchBoxID))
+    );
   };
 
   const HandleKeyDownName = (e) => {
@@ -98,6 +87,8 @@ const ToolBar = (props) => {
           setAddModal={setAddModal}
           Added={props.Added}
           setAdded={props.setAdded}
+          Hospitals={props.Hospitals}
+          setHospitals={props.setHospitals}
         />
       )}
     </div>

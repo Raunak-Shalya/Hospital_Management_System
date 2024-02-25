@@ -11,15 +11,16 @@ const Home = () => {
   const [DisplayBy, setDisplayBy] = useState("Id");
   const [PageNo, setPageNo] = useState(1);
   const [Added, setAdded] = useState(0);
+  let refresh = false;
 
-  let CurHospitals;
+  const [CurHospitals, setCurHospitals] = useState([]);
+  const [PageHospitals, setPageHospitals] = useState([]);
   //Variables for Implementing Pagination
   const totalPages = Math.ceil(Hospitals.length / 6);
-  const startIndex = (PageNo - 1) * 6;
-  const endIndex = startIndex + 6;
-  CurHospitals = Hospitals.slice(startIndex, endIndex);
+  let startIndex = (PageNo - 1) * 6;
+  let endIndex = startIndex + 6;
 
-  //Axios call to Backend for SortBy Functionality
+  //Axios call to Backend for Fetching Data
   useEffect(() => {
     const fetchdata = async () => {
       try {
@@ -32,16 +33,45 @@ const Home = () => {
       }
     };
     fetchdata();
-  }, [DisplayBy, PageNo, Added]);
+  }, [refresh]);
+
+  //Updating CurHospital onChange Hospitals
+  useEffect(() => {
+    setCurHospitals(Hospitals);
+  }, [Hospitals]);
+  //Updating PageHospital onChange CurHospital
+  useEffect(() => {
+    startIndex = (PageNo - 1) * 6;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  }, [CurHospitals]);
+
+  //Implmented Sorting
+  useEffect(() => {
+    setPageNo(1);
+    if (DisplayBy == "Name") {
+      setCurHospitals(
+        [...CurHospitals].sort((a, b) =>
+          a.hospitalName > b.hospitalName ? 1 : -1
+        )
+      );
+    } else {
+      setCurHospitals([...CurHospitals].sort((a, b) => (a.id > b.id ? 1 : -1)));
+      setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+    }
+  }, [DisplayBy]);
 
   const PageNoDec = () => {
     if (PageNo != 1) setPageNo(PageNo - 1);
-    console.log(PageNo);
   };
 
   const PageNoInc = () => {
-    if (PageNo != totalPages) setPageNo(PageNo + 1);
+    if (PageNo != Math.ceil(CurHospitals.length / 6)) setPageNo(PageNo + 1);
   };
+
+  useEffect(() => {
+    startIndex = (PageNo - 1) * 6;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  }, [PageNo]);
 
   return (
     <div className="box">
@@ -51,7 +81,12 @@ const Home = () => {
           setDisplayBy={setDisplayBy}
           setHospitals={setHospitals}
           Hospitals={Hospitals}
+          CurHospitals={CurHospitals}
+          setCurHospitals={setCurHospitals}
+          PageHospitals={PageHospitals}
+          setPageHospitals={setPageHospitals}
           Added={Added}
+          setPageNo={setPageNo}
           setAdded={setAdded}
         />
         <div className="ListTitles">
@@ -63,7 +98,7 @@ const Home = () => {
           <div className="Title6">Dicom</div>
         </div>
         <div className="HospitalsList">
-          {CurHospitals.map((Hospital) => (
+          {PageHospitals.map((Hospital) => (
             <HospitalBox Hospital={Hospital} key={Hospital.id} />
           ))}
         </div>

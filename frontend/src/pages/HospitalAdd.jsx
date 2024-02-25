@@ -107,7 +107,8 @@ const HospitalAdd = (props) => {
         console.log(err);
       });
       alert(`Hospital: ${Hospital.hospitalName} has been added`);
-      props.setAdded(props.Added + 1);
+      Hospital.id = props.Hospitals.length + 1;
+      props.setHospitals([...props.Hospitals, Hospital]);
     } catch (e) {
       alert(e);
     }
