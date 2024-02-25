@@ -1,27 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/DicomUpload.css";
 import axios from "axios";
 const DicomUpload = (props) => {
   const [File, setFile] = useState();
+  const [ServerDicom, setServerDicom] = useState(-1);
 
   const handleFile = (e) => {
     setFile(e.target.files[0]);
   };
 
+  //Checking Dicom Status
+  useEffect(() => {
+    const fetchdata = async () => {
+      const response = await axios.get(
+        `http://localhost:8080/view/${props.HospitalId}`
+      );
+      console.log(response);
+      if (response.data) {
+        setServerDicom(response.data[0].dicomId);
+      }
+    };
+    fetchdata();
+  }, []);
+
   //Uploading Dicom
   const UploadDicomFunc = async () => {
     try {
-      const url = `http://localhost:8080/upload/${props.HospitalId}`;
-
       const formData = new FormData();
       formData.append("file", File);
-
-      const response = await axios.post(url, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-
+      if (ServerDicom == -1) {
+        const response = await axios.post(
+          `http://localhost:8080/upload/${props.HospitalId}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      } else {
+        const response = await axios.put(
+          `http://localhost:8080/update/${ServerDicom}`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+      }
+      props.SetUploadModal(false);
+      alert("Dicom Uploaded Successfully");
       console.log("File upload successful:", response.data);
     } catch (error) {
       console.error("Error uploading file:", error);
@@ -38,7 +67,11 @@ const DicomUpload = (props) => {
         >
           <span>X</span>
         </div>
-
+        <div className="DicomStatusBox">
+          {ServerDicom == -1
+            ? "No Dicoms Present"
+            : `Dicom already Present, Uploading will update the current file`}
+        </div>
         <form>
           <input
             className="Select-File-Button"

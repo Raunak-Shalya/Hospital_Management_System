@@ -34,7 +34,7 @@ import jakarta.annotation.Resource;
 @Component
 public class DicomService {
 
-    private String FOLDER_PATH = "C:\\Users\\rauna\\OneDrive\\Desktop\\Hospital Managment System\\backend\\Hospital_Management_System\\src\\main\\resources\\Dicoms";
+    private String FOLDER_PATH = "C:\\Users\\rauna\\OneDrive\\Desktop\\Hospital Managment System\\backend\\Hospital_Management_System\\src\\main\\resources\\Dicoms\\";
 
     @Autowired
     public DicomRepo dicomRepository;
@@ -236,10 +236,6 @@ public class DicomService {
        dicom.setAge(age);
        dicom.setBirthDate(birthDate);
        dicom.setPatientSex(patientSex);
-
-
-
-
 
        Dicom fileData=dicomRepository.save(dicom);
        if (fileData != null) {

@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "../styles/HospitalBox.css";
 import HospitalEdit from "../pages/HospitalEdit";
 import HospitalView from "../pages/HospitalView";
 import DicomUpload from "../pages/DicomUpload";
+import DicomView from "../pages/DicomView";
 const HospitalBox = (props) => {
-  const navigate = useNavigate();
   const [EditModal, SetEditModal] = useState(false);
   const [ViewModal, SetViewModal] = useState(false);
   const [UploadModal, SetUploadModal] = useState(false);
+  const [DicomViewModal, setDicomViewModal] = useState(false);
   return (
     <div className="HospitalBox-box">
-      <div className="HospitalBox_id">{props.Hospital.id}</div>
-      <div className="HospitalBox_name">{props.Hospital.hospitalName}</div>
+      <div className="HospitalBoxEntry">{props.Hospital.id}</div>
+      <div className="HospitalBoxEntry">{props.Hospital.hospitalName}</div>
+      <div className="HospitalBoxEntry">{props.Hospital.name1}</div>
+      <div className="HospitalBoxEntry">{props.Hospital.name2}</div>
       <div className="button-container">
         <div
           className="btn btn-one"
@@ -36,6 +38,23 @@ const HospitalBox = (props) => {
         </div>
         {EditModal && (
           <HospitalEdit Hospital={props.Hospital} SetEditModal={SetEditModal} />
+        )}
+      </div>
+
+      <div className="button-container">
+        <div
+          className="btn btn-one"
+          onClick={() => {
+            setDicomViewModal(true);
+          }}
+        >
+          <span>View</span>
+        </div>
+        {DicomViewModal && (
+          <DicomView
+            setDicomViewModal={setDicomViewModal}
+            HospitalId={props.Hospital.id}
+          />
         )}
         <div
           className="btn btn-one"

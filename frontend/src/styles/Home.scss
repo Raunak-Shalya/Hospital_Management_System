@@ -79,6 +79,48 @@ body {
   border-radius: 25px;
 }
 
+.ListTitles {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+.Title1 {
+  width: 100px;
+  margin-left: 100px;
+  font-size: large;
+  font-weight: 600;
+}
+.Title2 {
+  width: 100px;
+  margin-left: 100px;
+  font-size: large;
+  font-weight: 600;
+}
+.Title3 {
+  width: 200px;
+  margin-left: 60px;
+  font-size: large;
+  font-weight: 600;
+}
+.Title4 {
+  width: 200px;
+  margin-left: 20px;
+  font-size: large;
+  font-weight: 600;
+}
+.Title5 {
+  width: 200px;
+  margin-left: 110px;
+  font-size: large;
+  font-weight: 600;
+}
+.Title6 {
+  width: 100px;
+  margin-left: 120px;
+  font-size: large;
+  font-weight: 600;
+}
 .HospitalsList {
   margin-top: 20px;
   border-radius: 25px;
@@ -91,5 +133,5 @@ body {
   margin-top: 25px;
   justify-content: space-around;
   position: absolute;
-  bottom: 70px;
+  bottom: 50px;
 }

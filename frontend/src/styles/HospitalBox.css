@@ -11,34 +11,23 @@
   border-radius: 4px;
 }
 
-.HospitalBox_id {
+.HospitalBoxEntry {
   font-size: large;
   font-size: 25px;
-  width: 20%;
+  width: 15%;
   height: 100%;
   padding-top: 10px;
   text-align: center;
   cursor: pointer;
 }
-.HospitalBox_id:hover {
-  transform: scale(1.25);
-}
-
-.HospitalBox_name {
-  font-size: 25px;
-  height: 100%;
-  width: 30%;
-  padding-top: 10px;
-  text-align: center;
-  cursor: pointer;
-}
-.HospitalBox_name:hover {
+.HospitalBoxEntry:hover {
   transform: scale(1.25);
 }
 
 .button-container {
   display: flex;
   justify-content: space-around;
+  margin-left: 80px;
 }
 
 .btn-one {
@@ -48,6 +37,7 @@
   text-align: center;
   height: 30px;
   width: 80px;
+  margin-left: 20px;
   cursor: pointer;
 }
 .btn-one span {

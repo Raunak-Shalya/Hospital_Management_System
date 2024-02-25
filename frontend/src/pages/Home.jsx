@@ -54,6 +54,14 @@ const Home = () => {
           Added={Added}
           setAdded={setAdded}
         />
+        <div className="ListTitles">
+          <div className="Title1">ID</div>
+          <div className="Title2">Name</div>
+          <div className="Title3">First Person Name</div>
+          <div className="Title4">Second Person Name</div>
+          <div className="Title5">Hospital Details</div>
+          <div className="Title6">Dicom</div>
+        </div>
         <div className="HospitalsList">
           {CurHospitals.map((Hospital) => (
             <HospitalBox Hospital={Hospital} key={Hospital.id} />
