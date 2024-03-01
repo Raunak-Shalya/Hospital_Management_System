@@ -11,10 +11,10 @@ const HospitalBox = (props) => {
   const [DicomViewModal, setDicomViewModal] = useState(false);
   return (
     <div className="HospitalBox-box">
-      <div className="HospitalBoxEntry">{props.Hospital.id}</div>
-      <div className="HospitalBoxEntry">{props.Hospital.hospitalName}</div>
-      <div className="HospitalBoxEntry">{props.Hospital.name1}</div>
-      <div className="HospitalBoxEntry">{props.Hospital.name2}</div>
+      <div className="HospitalBoxEntry1">{props.Hospital.id}</div>
+      <div className="HospitalBoxEntry2">{props.Hospital.hospitalName}</div>
+      <div className="HospitalBoxEntry3">{props.Hospital.name1}</div>
+      <div className="HospitalBoxEntry4">{props.Hospital.name2}</div>
       <div className="button-container">
         <div
           className="btn btn-one"

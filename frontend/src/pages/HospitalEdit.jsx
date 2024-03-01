@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { isAlpha, isEmail, isMobilePhone } from "validator";
-import "../styles/HospitalAddEdit.css";
+import "../styles/HospitalModal.css";
 
 const HospitalEdit = (props) => {
   const Hospital = props.Hospital;
@@ -126,6 +126,7 @@ const HospitalEdit = (props) => {
         >
           <span>X</span>
         </div>
+        <div className="Edit-Title">Hospital Edit</div>
         <div className="HospitalEditBox">
           <div className="HospitalEditEntryBox">
             <div className="HospitalEditEntryName">Hospital Name</div>

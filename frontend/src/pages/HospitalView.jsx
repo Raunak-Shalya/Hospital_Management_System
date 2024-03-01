@@ -1,14 +1,11 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import NavBar from "../components/Navbar";
 
 const HospitalView = (props) => {
   const Hospital = props.Hospital;
 
   return (
     <div className="modalBackground">
-      <div className="modalContainer">
+      <div className="ViewmodalContainer">
         <div
           className="btn-one-edit-close"
           onClick={() => {
@@ -17,11 +14,12 @@ const HospitalView = (props) => {
         >
           <span>X</span>
         </div>
+        <div className="View-Title">Hospital View</div>
         <div className="HospitalEditBox">
           <div className="HospitalEditEntryBox">
             <div className="HospitalEditEntryName">Hospital Name</div>
             <input
-              className="HospitalEditEntryInput"
+              className="HospitalViewEntryInput"
               value={Hospital.hospitalName}
             ></input>
           </div>

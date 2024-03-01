@@ -16,9 +16,9 @@ const Home = () => {
   const [CurHospitals, setCurHospitals] = useState([]);
   const [PageHospitals, setPageHospitals] = useState([]);
   //Variables for Implementing Pagination
-  const totalPages = Math.ceil(Hospitals.length / 6);
-  let startIndex = (PageNo - 1) * 6;
-  let endIndex = startIndex + 6;
+  const totalPages = Math.ceil(Hospitals.length / 9);
+  let startIndex = (PageNo - 1) * 9;
+  let endIndex = startIndex + 9;
 
   //Axios call to Backend for Fetching Data
   useEffect(() => {
@@ -41,7 +41,7 @@ const Home = () => {
   }, [Hospitals]);
   //Updating PageHospital onChange CurHospital
   useEffect(() => {
-    startIndex = (PageNo - 1) * 6;
+    startIndex = (PageNo - 1) * 9;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   }, [CurHospitals]);
 
@@ -65,11 +65,11 @@ const Home = () => {
   };
 
   const PageNoInc = () => {
-    if (PageNo != Math.ceil(CurHospitals.length / 6)) setPageNo(PageNo + 1);
+    if (PageNo != Math.ceil(CurHospitals.length / 9)) setPageNo(PageNo + 1);
   };
 
   useEffect(() => {
-    startIndex = (PageNo - 1) * 6;
+    startIndex = (PageNo - 1) * 9;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   }, [PageNo]);
 
@@ -95,7 +95,7 @@ const Home = () => {
           <div className="Title3">First Person Name</div>
           <div className="Title4">Second Person Name</div>
           <div className="Title5">Hospital Details</div>
-          <div className="Title6">Dicom</div>
+          <div className="Title6">DICOM</div>
         </div>
         <div className="HospitalsList">
           {PageHospitals.map((Hospital) => (
@@ -106,7 +106,7 @@ const Home = () => {
           <div className="btn btn-one" onClick={PageNoDec}>
             <span> &lt;&lt; </span>
           </div>
-          <div> {PageNo}</div>
+          <div className="PaginationNumber"> {PageNo}</div>
           <div className="btn btn-one" onClick={PageNoInc}>
             <span>&gt;&gt;</span>
           </div>

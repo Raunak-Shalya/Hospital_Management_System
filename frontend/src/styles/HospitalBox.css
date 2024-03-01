@@ -4,30 +4,63 @@
   outline-width: 2px;
   width: auto;
   margin: 0px 3px 0px 3px;
-  height: 60px;
+  height: 45px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-radius: 4px;
 }
 
-.HospitalBoxEntry {
+.HospitalBoxEntry1 {
   font-size: large;
-  font-size: 25px;
-  width: 15%;
+  font-size: 20px;
+  width: 50px;
   height: 100%;
   padding-top: 10px;
-  text-align: center;
-  cursor: pointer;
+  text-align: start;
+  margin-left: 34px;
+  user-select: none;
+  line-height: 40px;
 }
-.HospitalBoxEntry:hover {
-  transform: scale(1.25);
+.HospitalBoxEntry2 {
+  font-size: large;
+  font-size: 20px;
+  width: 200px;
+  height: 100%;
+  padding-top: 10px;
+  margin-left: 100px;
+  text-align: start;
+  user-select: none;
+  line-height: 40px;
+}
+.HospitalBoxEntry3 {
+  font-size: large;
+  font-size: 20px;
+  width: 220px;
+  margin-left: 60px;
+  height: 100%;
+  padding-top: 10px;
+  text-align: start;
+  user-select: none;
+  line-height: 40px;
+}
+.HospitalBoxEntry4 {
+  font-size: large;
+  font-size: 20px;
+  width: 220px;
+  margin-left: 20px;
+  height: 100%;
+  padding-top: 10px;
+  text-align: start;
+  user-select: none;
+  line-height: 40px;
 }
 
 .button-container {
   display: flex;
   justify-content: space-around;
-  margin-left: 80px;
+  width: 220px;
+  margin-left: 90px;
 }
 
 .btn-one {
@@ -39,6 +72,9 @@
   width: 80px;
   margin-left: 20px;
   cursor: pointer;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .btn-one span {
   transition: all 0.3s;

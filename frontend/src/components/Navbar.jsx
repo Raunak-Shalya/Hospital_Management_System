@@ -23,7 +23,7 @@ export default function NavBar() {
       <AppBar position="static" className="navbarx">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Deeptek
+            DeepTek
           </Typography>
           <Button color="inherit" onClick={LogoutHandler}>
             Logout

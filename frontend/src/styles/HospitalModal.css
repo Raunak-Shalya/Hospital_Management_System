@@ -1,0 +1,182 @@
+.modalBackground {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  backdrop-filter: blur(10px);
+}
+
+.View-Title {
+  margin-top: 20px;
+  margin-left: 50px;
+  font-size: x-large;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.Edit-Title {
+  margin-top: 20px;
+  margin-left: 50px;
+  font-size: x-large;
+}
+.modalContainer {
+  width: 25vw;
+  height: 90vh;
+  background-color: #0f1117;
+  margin: auto;
+  margin-top: 5vh;
+  border-radius: 25px;
+  position: absolute;
+}
+.ViewmodalContainer {
+  width: 25vw;
+  height: 85vh;
+  background-color: #0f1117;
+  margin: auto;
+  margin-top: 5vh;
+  border-radius: 25px;
+  position: absolute;
+}
+.HospitalEditBox {
+  width: 100%;
+  height: 85%;
+  padding-top: 5px;
+  padding-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.HospitalEditEntryBox {
+  width: 100%;
+}
+.HospitalEditEntryName {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.HospitalEditEntryInput {
+  width: 80%;
+}
+.HospitalViewEntryInput {
+  width: 80%;
+  user-select: none;
+}
+.btn-one-edit {
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
+  text-align: center;
+  height: 30px;
+  width: 80px;
+  margin-left: 30%;
+  margin-top: 30px;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+.btn-one-edit span {
+  transition: all 0.3s;
+}
+.btn-one-edit::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.1, 1);
+}
+.btn-one-edit:hover span {
+  letter-spacing: 2px;
+}
+.btn-one-edit:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+.btn-one-edit::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.btn-one-edit:hover::after {
+  opacity: 0;
+  transform: scale(0.1, 1);
+}
+
+.btn-one-edit-close {
+  color: #fff;
+  transition: all 0.3s;
+  position: relative;
+  text-align: center;
+  height: 25px;
+  width: 80px;
+  margin-top: 5px;
+  margin-left: 75%;
+  cursor: pointer;
+}
+.btn-one-edit-close span {
+  transition: all 0.3s;
+}
+.btn-one-edit-close::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-top-style: solid;
+  border-bottom-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+  transform: scale(0.1, 1);
+}
+.btn-one-edit-close:hover span {
+  letter-spacing: 2px;
+}
+.btn-one-edit-close:hover::before {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+.btn-one-edit-close::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all 0.3s;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.btn-one-edit-close:hover::after {
+  opacity: 0;
+  transform: scale(0.1, 1);
+}

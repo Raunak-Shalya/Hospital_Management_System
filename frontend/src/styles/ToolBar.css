@@ -13,9 +13,9 @@
   background-color: white;
   color: black;
   height: 40px;
-  width: 300px;
+  width: 220px;
   padding-left: 10px;
-  font-size: large;
+  font-size: 15px;
   margin-left: 30px;
   border-radius: 10px;
 }
@@ -33,102 +33,41 @@
   background-color: #078690;
 }
 
-.button-71 {
-  background-color: #035e75;
+.button-66 {
+  background-color: #0a6bff;
+  border-radius: 4px;
   border: 0;
-  border-radius: 56px;
+  box-shadow: rgba(1, 60, 136, 0.5) 0 -1px 3px 0 inset,
+    rgba(0, 44, 97, 0.1) 0 3px 6px 0;
+  box-sizing: border-box;
   color: #fff;
   cursor: pointer;
-  display: inline-block;
-  font-family: system-ui, -apple-system, system-ui, "Segoe UI", Roboto, Ubuntu,
-    "Helvetica Neue", sans-serif;
-  font-size: 13px;
+  display: inherit;
+  font-family: "Space Grotesk", -apple-system, system-ui, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 14px;
   font-weight: 500;
-  outline: 0;
-  margin-right: 50px;
-  height: 50px;
+  line-height: 12px;
+  height: 43px;
+  width: 130px;
+  margin-top: 6px;
   position: relative;
   text-align: center;
-  text-decoration: none;
-  transition: all 0.3s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  vertical-align: baseline;
+  transition: all 0.2s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-.button-71:before {
-  background-color: initial;
-  background-image: linear-gradient(#fff 0, rgba(255, 255, 255, 0) 100%);
-  border-radius: 125px;
-  content: "";
-  height: 50%;
-  left: 4%;
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  transition: all 0.3s;
-  width: 92%;
-}
-
-.button-71:hover {
-  background-color: #087d9a;
-  box-shadow: rgba(255, 255, 255, 0.2) 0 3px 15px inset,
-    rgba(0, 0, 0, 0.1) 0 3px 5px, rgba(0, 0, 0, 0.1) 0 10px 13px;
-  transform: scale(1.05);
+.button-66:hover {
+  background-color: #065dd8;
+  transform: translateY(-2px);
 }
 
 @media (min-width: 768px) {
-  .button-71 {
-    padding: 16px 48px;
+  .button-66 {
+    padding: 16px 44px;
   }
-}
-
-.dropbtn {
-  background-color: rgb(3, 94, 117);
-  color: white;
-  padding: 0px;
-  height: 40px;
-  width: 160px;
-  margin-top: 6px;
-  font-size: 16px;
-  border: none;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #ddd;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-  background-color: #078690;
 }

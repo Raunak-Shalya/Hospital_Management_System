@@ -30,7 +30,7 @@ const DcmImage = ({ dicomId }) => {
         type: ViewportType.STACK,
         element,
         defaultOptions: {
-          background: [0.2, 0, 0.2],
+          background: [0, 0, 0],
         },
       };
 

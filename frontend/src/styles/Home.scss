@@ -1,82 +1,12 @@
-body {
-  animation: theme 21s linear infinite;
-
-  &:after,
-  &:before {
-    content: "";
-    display: block;
-    position: fixed;
-    z-index: -1;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    width: 100vmax;
-    height: 100vmax;
-    background: rgba(0, 0, 0, 0.05);
-    animation: background 90s linear infinite;
-  }
-
-  &:after {
-    left: 15vw;
-  }
-
-  &:before {
-    right: 15vw;
-    animation-delay: -30s;
-    animation-direction: reverse;
-  }
-}
-
-@keyframes theme {
-  0% {
-    background: #74c390;
-  }
-
-  16% {
-    background: #5dbdb6;
-  }
-
-  33% {
-    background: #59d4e1;
-  }
-
-  50% {
-    background: #51bce8;
-  }
-
-  66% {
-    background: #fa5374;
-  }
-
-  83% {
-    background: #e46653;
-  }
-
-  100% {
-    background: #74c390;
-  }
-}
-
-@keyframes background {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .box {
   width: 100vw;
   height: 100vh;
 }
 .homebox {
-  width: 95vw;
-  height: 80vh;
+  width: 100vw;
+  height: 100vh;
   background-color: #1a1e28;
   margin: auto;
-  margin-top: 5vh;
-  border-radius: 25px;
 }
 
 .ListTitles {
@@ -86,43 +16,56 @@ body {
   width: 100%;
 }
 .Title1 {
-  width: 100px;
-  margin-left: 100px;
+  width: 50px;
+  margin-left: 34px;
   font-size: large;
   font-weight: 600;
+  user-select: none;
 }
 .Title2 {
-  width: 100px;
+  width: 200px;
   margin-left: 100px;
   font-size: large;
   font-weight: 600;
+  user-select: none;
 }
 .Title3 {
-  width: 200px;
+  width: 220px;
   margin-left: 60px;
   font-size: large;
   font-weight: 600;
+  user-select: none;
 }
 .Title4 {
-  width: 200px;
+  width: 220px;
   margin-left: 20px;
   font-size: large;
   font-weight: 600;
+  user-select: none;
 }
 .Title5 {
   width: 200px;
-  margin-left: 110px;
-  font-size: large;
-  font-weight: 600;
-}
-.Title6 {
-  width: 100px;
   margin-left: 120px;
   font-size: large;
   font-weight: 600;
+  user-select: none;
+}
+.Title6 {
+  width: 100px;
+  margin-left: 110px;
+  font-size: large;
+  font-weight: 600;
+  user-select: none;
+}
+
+.PaginationNumber {
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  padding-left: 12px;
 }
 .HospitalsList {
-  margin-top: 20px;
+  margin-top: 3px;
   border-radius: 25px;
 }
 
@@ -133,5 +76,5 @@ body {
   margin-top: 25px;
   justify-content: space-around;
   position: absolute;
-  bottom: 50px;
+  bottom: 35px;
 }
