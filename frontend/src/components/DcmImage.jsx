@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { RenderingEngine, Enums } from "@cornerstonejs/core";
 import { initialiseCornerstone } from "./initCornerstone.jsx";
-import { useState } from "react";
 
 const { ViewportType } = Enums;
 
 const DcmImage = ({ dicomId }) => {
   useEffect(() => {
     const run = async () => {
-      const imageIds = [`dicomweb://localhost:8080/downloadImage/${dicomId}`];
+      const imageIds = [
+        `dicomweb://localhost:8080/user/downloadImage/${dicomId}`,
+      ];
 
       const element = document.createElement("div");
       element.id = "cornerstone-element";

@@ -17,7 +17,7 @@ function ViewDicomPanel(props) {
     const fetchDicomID = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/view/${props.HospitalId}`
+          `http://localhost:8080/user/view/${props.HospitalId}`
         );
         setDicomID(response.data[0].dicomId);
         console.log(response.data[0].dicomId);
@@ -35,7 +35,7 @@ function ViewDicomPanel(props) {
       console.log(dicomID);
       if (dicomID == -1) return;
       axios
-        .get(`http://localhost:8080/viewPatientDetails/${dicomID}`, {
+        .get(`http://localhost:8080/user/viewPatientDetails/${dicomID}`, {
           headers: {
             Accept: "application/json",
           },

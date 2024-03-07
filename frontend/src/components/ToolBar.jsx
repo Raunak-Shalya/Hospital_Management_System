@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/toolbar.css";
 import HospitalAdd from "../pages/HospitalAdd";
-import axios from "axios";
 
 const ToolBar = (props) => {
   const [AddModal, setAddModal] = useState(false);
@@ -9,12 +8,7 @@ const ToolBar = (props) => {
   const [SearchBoxName1, setSearchBoxName1] = useState("");
   const [SearchBoxName2, setSearchBoxName2] = useState("");
   const [SearchBoxID, setSearchBoxID] = useState("");
-  const SetDisplayByName = () => {
-    props.setDisplayBy("Name");
-  };
-  const SetDisplayById = () => {
-    props.setDisplayBy("Id");
-  };
+  const [SearchBoxAddress, setSearchBoxAddress] = useState("");
 
   const handleChangeSearchBarName = (e) => {
     setSearchBoxName(e.target.value);
@@ -31,6 +25,9 @@ const ToolBar = (props) => {
   const handleChangeSearchBarName2 = (e) => {
     setSearchBoxName2(e.target.value);
   };
+  const handleChangeSearchBarAddress = (e) => {
+    setSearchBoxAddress(e.target.value);
+  };
 
   const OnClickHandlerAddButton = () => {
     setAddModal(true);
@@ -40,9 +37,9 @@ const ToolBar = (props) => {
     props.setCurHospitals(props.Hospitals);
     setSearchBoxID("");
     setSearchBoxName("");
+    setSearchBoxAddress("");
+    setSearchBoxName1("");
     setSearchBoxName2("");
-    setSearchBoxName("");
-    document.getElementsByClassName("SearchBox").reset();
   };
 
   //Searching By Name
@@ -56,9 +53,16 @@ const ToolBar = (props) => {
   //Searching By ID
   const SearchFunctionID = async () => {
     props.setPageNo(1);
-    console.log(props.Hospitals);
     props.setCurHospitals(
       props.CurHospitals.filter((h) => String(h.id).startsWith(SearchBoxID))
+    );
+  };
+  const SearchFunctionAddress = async () => {
+    props.setPageNo(1);
+    props.setCurHospitals(
+      props.CurHospitals.filter((h) =>
+        h.hospitalAddress.startsWith(SearchBoxAddress)
+      )
     );
   };
 
@@ -90,6 +94,9 @@ const ToolBar = (props) => {
   const HandleKeyDownName2 = (e) => {
     if (e.key === "Enter") SearchFunctionName2();
   };
+  const HandleKeyDownAddress = (e) => {
+    if (e.key === "Enter") SearchFunctionAddress();
+  };
   return (
     <div className="ToolBarComponent">
       <div className="SearchComponent">
@@ -108,8 +115,8 @@ const ToolBar = (props) => {
         <input
           className="SearchBox"
           placeholder="Search Address"
-          onChange={handleChangeSearchBarName2}
-          onKeyDown={HandleKeyDownName2}
+          onChange={handleChangeSearchBarAddress}
+          onKeyDown={HandleKeyDownAddress}
         ></input>
         <input
           className="SearchBox"

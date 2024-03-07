@@ -3,6 +3,8 @@ import axios from "axios";
 import { isAlpha, isEmail, isMobilePhone } from "validator";
 import "../styles/HospitalModal.css";
 
+axios.defaults.withCredentials = true;
+
 const HospitalEdit = (props) => {
   const Hospital = props.Hospital;
 
@@ -39,7 +41,7 @@ const HospitalEdit = (props) => {
     curcontactNo2 = e.target.value;
   };
 
-  const submitHandler = () => {
+  const submitHandler = async () => {
     if (curhospitalName == "") {
       alert("Enter Hospital Name");
       return;
@@ -102,16 +104,18 @@ const HospitalEdit = (props) => {
     }
     props.SetEditModal(false);
     Hospital.hospitalName = curhospitalName;
-    Hospital.Address = curhospitalAddress;
+    Hospital.hospitalAddress = curhospitalAddress;
     Hospital.name1 = curname1;
     Hospital.email1 = curemail1;
     Hospital.contactNo1 = curcontactNo1;
     Hospital.name2 = curname2;
     Hospital.email2 = curemail2;
     Hospital.contactNo2 = curcontactNo2;
-    axios.put(`http://localhost:8080/${Hospital.id}`, Hospital).catch((err) => {
-      console.log(err);
-    });
+    await axios
+      .put(`http://localhost:8080/user/${Hospital.id}`, Hospital)
+      .catch((err) => {
+        console.log(err);
+      });
     alert(`Hospital ${Hospital.hospitalName} Updated Sucessfully`);
   };
 

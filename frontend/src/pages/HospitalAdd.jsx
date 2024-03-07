@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "../styles/HospitalModal.css";
-import validator, { isAlpha, isEmail, isMobilePhone } from "validator";
+import { isAlpha, isEmail, isMobilePhone } from "validator";
 
 const HospitalAdd = (props) => {
   let Hospital = {
@@ -103,7 +103,7 @@ const HospitalAdd = (props) => {
     }
     props.setAddModal(false);
     try {
-      axios.post(`http://localhost:8080/`, Hospital).catch((err) => {
+      axios.post(`http://localhost:8080/user/`, Hospital).catch((err) => {
         console.log(err);
       });
       alert(`Hospital: ${Hospital.hospitalName} has been added`);

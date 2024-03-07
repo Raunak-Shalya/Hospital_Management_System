@@ -28,8 +28,8 @@
   width: 200px;
   height: 100%;
   padding-top: 10px;
-  margin-left: 100px;
-  text-align: start;
+  margin-left: 30px;
+  text-align: left;
   user-select: none;
   line-height: 40px;
 }
@@ -37,17 +37,28 @@
   font-size: large;
   font-size: 20px;
   width: 220px;
-  margin-left: 60px;
+  margin-left: 40px;
   height: 100%;
   padding-top: 10px;
-  text-align: start;
+  text-align: left;
   user-select: none;
   line-height: 40px;
 }
 .HospitalBoxEntry4 {
   font-size: large;
   font-size: 20px;
-  width: 220px;
+  width: 150px;
+  margin-left: 20px;
+  height: 100%;
+  padding-top: 10px;
+  text-align: start;
+  user-select: none;
+  line-height: 40px;
+}
+.HospitalBoxEntry5 {
+  font-size: large;
+  font-size: 20px;
+  width: 150px;
   margin-left: 20px;
   height: 100%;
   padding-top: 10px;

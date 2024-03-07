@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "../styles/LoginPage.css";
-import { auth } from "../components/Fb";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import axios from "axios";
 
-const LoginPage = () => {
+const LoginPage = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,15 +14,18 @@ const LoginPage = () => {
     if (password == "") windows.alert("Enter Password To Login");
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
+      const authdata = { username: email, password: password };
+      console.log(authdata);
+      const response = await axios.post(
+        "http://localhost:8080/auth/signin",
+        authdata
       );
-      const user = userCredential.user;
-      localStorage.setItem("token", user.accessToken);
-      localStorage.setItem("user", JSON.stringify(user));
-      navigate("/");
+
+      if (response.data.result == "SUCCESS") {
+        localStorage.setItem("jwtToken", response.data.token);
+        await props.setauth(true);
+        navigate("/");
+      }
     } catch (error) {
       alert("Invalid Username or Password");
     }

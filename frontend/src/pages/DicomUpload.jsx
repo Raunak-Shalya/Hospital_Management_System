@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../styles/DicomUpload.css";
 import axios from "axios";
+
+axios.defaults.withCredentials = true;
+
 const DicomUpload = (props) => {
   const [File, setFile] = useState();
   const [ServerDicom, setServerDicom] = useState(-1);
@@ -13,7 +16,7 @@ const DicomUpload = (props) => {
   useEffect(() => {
     const fetchdata = async () => {
       const response = await axios.get(
-        `http://localhost:8080/view/${props.HospitalId}`
+        `http://localhost:8080/user/view/${props.HospitalId}`
       );
       console.log(response);
       if (response.data) {
@@ -30,7 +33,7 @@ const DicomUpload = (props) => {
       formData.append("file", File);
       if (ServerDicom == -1) {
         const response = await axios.post(
-          `http://localhost:8080/upload/${props.HospitalId}`,
+          `http://localhost:8080/user/upload/${props.HospitalId}`,
           formData,
           {
             headers: {
@@ -40,7 +43,7 @@ const DicomUpload = (props) => {
         );
       } else {
         const response = await axios.put(
-          `http://localhost:8080/update/${ServerDicom}`,
+          `http://localhost:8080/user/update/${ServerDicom}`,
           formData,
           {
             headers: {

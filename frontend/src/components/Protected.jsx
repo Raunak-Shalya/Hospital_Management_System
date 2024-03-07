@@ -1,10 +1,9 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import Home from "../pages/Home";
 
 const Protected = () => {
-  const token = localStorage.getItem("token");
-
-  return token ? <Outlet /> : <Navigate to="/login" />;
+  return false ? <Home /> : <Navigate to="/login" />;
 };
 
 export default Protected;

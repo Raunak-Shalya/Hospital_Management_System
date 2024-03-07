@@ -6,6 +6,8 @@ import HospitalBox from "../components/HospitalBox";
 import ToolBar from "../components/ToolBar";
 const baseURL = "http://localhost:8080";
 
+axios.defaults.withCredentials = true;
+
 const Home = () => {
   const [Hospitals, setHospitals] = useState([]);
   const [DisplayBy, setDisplayBy] = useState("Id");
@@ -25,7 +27,7 @@ const Home = () => {
     const fetchdata = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/sortBy${DisplayBy}`
+          `http://localhost:8080/user/sortBy${DisplayBy}`
         );
         setHospitals(response.data);
       } catch (error) {
@@ -92,10 +94,11 @@ const Home = () => {
         <div className="ListTitles">
           <div className="Title1">ID</div>
           <div className="Title2">Name</div>
-          <div className="Title3">First Person Name</div>
-          <div className="Title4">Second Person Name</div>
-          <div className="Title5">Hospital Details</div>
-          <div className="Title6">DICOM</div>
+          <div className="Title3">Address</div>
+          <div className="Title4">First Person</div>
+          <div className="Title5">Second Person</div>
+          <div className="Title6">Hospital Details</div>
+          <div className="Title7">DICOM</div>
         </div>
         <div className="HospitalsList">
           {PageHospitals.map((Hospital) => (
