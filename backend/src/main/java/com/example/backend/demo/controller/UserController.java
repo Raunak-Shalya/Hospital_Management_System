@@ -134,23 +134,7 @@ public class UserController {
     }
 
 
-    @GetMapping("/downloadImage/{dicomId}")
-    public ResponseEntity<?> downLoadImage (@PathVariable("dicomId") int dicomId, HttpServletRequest request) throws IOException{
-        Resource resource= dicom_service.downloadImage(dicomId);
-        String mimeType;
 
-        try{
-            mimeType= request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        }catch(IOException e){
-            mimeType=  MediaType.APPLICATION_OCTET_STREAM_VALUE;
-        }
-
-        mimeType= (mimeType==null)? MediaType.APPLICATION_OCTET_STREAM_VALUE : mimeType;
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(mimeType))
-                .body(resource);
-    }
 
     @PutMapping("/saveComment/{dicomId}")
     public void CommentOnDicom (@PathVariable("dicomId")int dicomId,@RequestParam("comment") String comment){

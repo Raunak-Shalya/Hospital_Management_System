@@ -43,7 +43,7 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
         String jwt=null;
-        if(!(request.getRequestURI().startsWith("/auth"))) {
+        if(!(request.getRequestURI().startsWith("/auth") || request.getRequestURI().startsWith("/dicom"))) {
             jwt = getTokenFromRequest(request);
         }
         String username="";

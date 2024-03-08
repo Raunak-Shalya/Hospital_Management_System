@@ -117,3 +117,7 @@ html {
 .register-link p a:hover {
   text-decoration: underline;
 }
+
+.error1 {
+  color: red;
+}

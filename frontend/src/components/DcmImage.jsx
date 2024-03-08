@@ -8,7 +8,7 @@ const DcmImage = ({ dicomId }) => {
   useEffect(() => {
     const run = async () => {
       const imageIds = [
-        `dicomweb://localhost:8080/user/downloadImage/${dicomId}`,
+        `dicomweb://localhost:8080/dicom/downloadImage/${dicomId}`,
       ];
 
       const element = document.createElement("div");
