@@ -65,9 +65,16 @@ const Home = () => {
   const PageNoDec = () => {
     if (PageNo != 1) setPageNo(PageNo - 1);
   };
+  const PageNoDecs = () => {
+    setPageNo(max(0, PageNo - 3));
+  };
 
   const PageNoInc = () => {
     if (PageNo != Math.ceil(CurHospitals.length / 9)) setPageNo(PageNo + 1);
+  };
+
+  const PageNoIncs = () => {
+    setPageNo(min(totalPages, PageNo + 3));
   };
 
   useEffect(() => {
@@ -106,12 +113,21 @@ const Home = () => {
           ))}
         </div>
         <div className="PaginationBox">
+          <div className="btn btn-one" onClick={PageNoDecs}>
+            <span> &lt;&lt;&lt; </span>
+          </div>
           <div className="btn btn-one" onClick={PageNoDec}>
             <span> &lt;&lt; </span>
           </div>
-          <div className="PaginationNumber"> {PageNo}</div>
+          <div className="PaginationNumber">
+            {" "}
+            {PageNo} / {totalPages}
+          </div>
           <div className="btn btn-one" onClick={PageNoInc}>
             <span>&gt;&gt;</span>
+          </div>
+          <div className="btn btn-one" onClick={PageNoIncs}>
+            <span>&gt;&gt;&gt;</span>
           </div>
         </div>
       </div>

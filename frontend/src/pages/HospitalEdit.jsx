@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { isAlpha, isEmail, isMobilePhone } from "validator";
+import { isEmail, isMobilePhone } from "validator";
 import "../styles/HospitalModal.css";
 
 axios.defaults.withCredentials = true;
@@ -16,6 +16,9 @@ const HospitalEdit = (props) => {
     curname2 = Hospital.name2,
     curemail2 = Hospital.email2,
     curcontactNo2 = Hospital.contactNo2;
+
+  const [Error3, setError3] = useState(false);
+  const [Error3m, setError3m] = useState("");
   const hospitalNameChange = (e) => {
     curhospitalName = e.target.value;
   };
@@ -46,20 +49,12 @@ const HospitalEdit = (props) => {
       alert("Enter Hospital Name");
       return;
     }
-    if (!isAlpha(curhospitalName)) {
-      alert("Hospital Name Invalid");
-      return;
-    }
     if (curhospitalAddress == "") {
       alert("Enter Hopsital Address");
       return;
     }
     if (curname1 == "") {
       alert("Enter First Person Name");
-      return;
-    }
-    if (!isAlpha(curname1)) {
-      alert("First Person Name Invalid");
       return;
     }
     if (curemail1 == "") {
@@ -80,10 +75,6 @@ const HospitalEdit = (props) => {
     }
     if (curname2 == "") {
       alert("Enter Second Person Name");
-      return;
-    }
-    if (!isAlpha(curname2)) {
-      alert("Second Person Name Invalid");
       return;
     }
     if (curemail2 == "") {
@@ -130,10 +121,10 @@ const HospitalEdit = (props) => {
         >
           <span>X</span>
         </div>
-        <div className="Edit-Title">Hospital Edit</div>
+        <div className="Edit-Title">Edit Hospital</div>
         <div className="HospitalEditBox">
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Name</div>
+            <div className="HospitalEditEntryName">Hospital Name*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.hospitalName}
@@ -142,7 +133,7 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Address</div>
+            <div className="HospitalEditEntryName">Hospital Address*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.hospitalAddress}
@@ -151,7 +142,7 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Name</div>
+            <div className="HospitalEditEntryName">First Person Name*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.name1}
@@ -160,7 +151,7 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Email</div>
+            <div className="HospitalEditEntryName">First Person Email*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.email1}
@@ -170,7 +161,7 @@ const HospitalEdit = (props) => {
 
           <div className="HospitalEditEntryBox">
             <div className="HospitalEditEntryName">
-              First Person Contact No.
+              First Person Contact No.*
             </div>
             <input
               className="HospitalEditEntryInput"
@@ -180,7 +171,7 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Name</div>
+            <div className="HospitalEditEntryName">Second Person Name*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.name2}
@@ -189,7 +180,7 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Email</div>
+            <div className="HospitalEditEntryName">Second Person Email*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.email2}
@@ -199,7 +190,7 @@ const HospitalEdit = (props) => {
 
           <div className="HospitalEditEntryBox">
             <div className="HospitalEditEntryName">
-              Second Person Contact No.
+              Second Person Contact No.*
             </div>
             <input
               className="HospitalEditEntryInput"

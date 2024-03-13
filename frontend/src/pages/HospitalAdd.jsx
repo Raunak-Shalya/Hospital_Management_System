@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "../styles/HospitalModal.css";
-import { isAlpha, isEmail, isMobilePhone } from "validator";
+import { isEmail, isMobilePhone } from "validator";
 
 const HospitalAdd = (props) => {
   let Hospital = {
@@ -45,20 +45,13 @@ const HospitalAdd = (props) => {
       alert("Enter Hospital Name");
       return;
     }
-    if (!isAlpha(Hospital.hospitalName)) {
-      alert("Hospital Name Invalid");
-      return;
-    }
+
     if (Hospital.hospitalAddress == "") {
       alert("Enter Hopsital Address");
       return;
     }
     if (Hospital.name1 == "") {
       alert("Enter First Person Name");
-      return;
-    }
-    if (!isAlpha(Hospital.name1)) {
-      alert("First Person Name Invalid");
       return;
     }
     if (Hospital.email1 == "") {
@@ -79,10 +72,6 @@ const HospitalAdd = (props) => {
     }
     if (Hospital.name2 == "") {
       alert("Enter Second Person Name");
-      return;
-    }
-    if (!isAlpha(Hospital.name2)) {
-      alert("Second Person Name Invalid");
       return;
     }
     if (Hospital.email2 == "") {
@@ -124,10 +113,10 @@ const HospitalAdd = (props) => {
         >
           <span>X</span>
         </div>
-        <div className="Edit-Title">Hospital Add</div>
+        <div className="Edit-Title">Add Hospital</div>
         <div className="HospitalEditBox">
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Name</div>
+            <div className="HospitalEditEntryName">Hospital Name*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.hospitalName}
@@ -136,7 +125,7 @@ const HospitalAdd = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Address</div>
+            <div className="HospitalEditEntryName">Hospital Address*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.hospitalAddress}
@@ -145,7 +134,7 @@ const HospitalAdd = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Name</div>
+            <div className="HospitalEditEntryName">First Person Name*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.name1}
@@ -154,7 +143,7 @@ const HospitalAdd = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Email</div>
+            <div className="HospitalEditEntryName">First Person Email*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.email1}
@@ -164,7 +153,7 @@ const HospitalAdd = (props) => {
 
           <div className="HospitalEditEntryBox">
             <div className="HospitalEditEntryName">
-              First Person Contact No.
+              First Person Contact No.*
             </div>
             <input
               className="HospitalEditEntryInput"
@@ -174,7 +163,7 @@ const HospitalAdd = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Name</div>
+            <div className="HospitalEditEntryName">Second Person Name*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.name2}
@@ -183,7 +172,7 @@ const HospitalAdd = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Email</div>
+            <div className="HospitalEditEntryName">Second Person Email*</div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.email2}
@@ -193,7 +182,7 @@ const HospitalAdd = (props) => {
 
           <div className="HospitalEditEntryBox">
             <div className="HospitalEditEntryName">
-              Second Person Contact No.
+              Second Person Contact No.*
             </div>
             <input
               className="HospitalEditEntryInput"

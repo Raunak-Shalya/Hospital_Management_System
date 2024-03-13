@@ -14,7 +14,7 @@ const HospitalView = (props) => {
         >
           <span>X</span>
         </div>
-        <div className="View-Title">Hospital View</div>
+        <div className="View-Title">View Hospital</div>
         <div className="HospitalEditBox">
           <div className="HospitalEditEntryBox">
             <div className="HospitalEditEntryName">Hospital Name</div>
