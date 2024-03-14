@@ -1,5 +1,5 @@
 .modalContainer-DicomView {
-  height: 90vh;
+  height: 85vh;
   width: 75vw;
   background-color: #0f1117;
   margin: auto;
@@ -7,7 +7,7 @@
   border-radius: 25px;
   position: absolute;
 }
-.patient-detial-title {
+.patient-detail-title {
   font-size: x-large;
   margin-left: 10%;
   margin-top: 5%;
@@ -19,15 +19,50 @@
   margin-left: 10%;
   margin-top: 2%;
 }
-.Patient-Detail-Entry {
+.Patient-Detail-Entry-container {
+  display: flex;
+  flex-direction: row;
   outline-style: solid;
   outline-color: white;
   outline-width: 2px;
   border-radius: 4px;
-  height: 30px;
-  font-size: large;
-  padding-left: 40px;
+  height: 40px;
+  font-size: 15px;
 }
+
+.Patient-Detail-Entry1 {
+  padding-left: 20px;
+  padding-top: 15px;
+}
+.Patient-Detail-Entry21 {
+  padding-top: 15px;
+  margin-left: 138px;
+}
+.Patient-Detail-Entry22 {
+  padding-top: 15px;
+  margin-left: 111px;
+}
+.Patient-Detail-Entry23 {
+  padding-top: 15px;
+  margin-left: 95px;
+}
+.Patient-Detail-Entry24 {
+  padding-top: 15px;
+  margin-left: 41px;
+}
+.Patient-Detail-Entry25 {
+  padding-top: 15px;
+  margin-left: 126px;
+}
+.Patient-Detail-Entry26 {
+  padding-top: 15px;
+  margin-left: 127px;
+}
+.Patient-Detail-Entry27 {
+  padding-top: 15px;
+  margin-left: 46px;
+}
+
 .btn-one-edit-close-dicomview {
   color: #fff;
   transition: all 0.3s;

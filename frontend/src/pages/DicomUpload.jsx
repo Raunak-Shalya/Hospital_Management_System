@@ -53,7 +53,6 @@ const DicomUpload = (props) => {
         );
       }
       props.SetUploadModal(false);
-      alert("Dicom Uploaded Successfully");
       console.log("File upload successful:", response.data);
     } catch (error) {
       console.error("Error uploading file:", error);

@@ -8,89 +8,77 @@ axios.defaults.withCredentials = true;
 const HospitalEdit = (props) => {
   const Hospital = props.Hospital;
 
-  let curhospitalName = Hospital.hospitalName,
-    curhospitalAddress = Hospital.hospitalAddress,
-    curname1 = Hospital.name1,
-    curemail1 = Hospital.email1,
-    curcontactNo1 = Hospital.contactNo1,
-    curname2 = Hospital.name2,
-    curemail2 = Hospital.email2,
-    curcontactNo2 = Hospital.contactNo2;
+  const [curhospitalName, setcurhospitalName] = useState(Hospital.hospitalName);
+  const [curhospitalAddress, setcurhospitalAddress] = useState(
+    Hospital.hospitalAddress
+  );
+  const [curname1, setcurname1] = useState(Hospital.name1);
+  const [curemail1, setcuremail1] = useState(Hospital.email1);
+  const [curcontactNo1, setcurcontactNo1] = useState(Hospital.contactNo1);
+  const [curname2, setcurname2] = useState(Hospital.name2);
+  const [curemail2, setcuremail2] = useState(Hospital.email2);
+  const [curcontactNo2, setcurcontactNo2] = useState(Hospital.contactNo2);
 
-  const [Error3, setError3] = useState(false);
-  const [Error3m, setError3m] = useState("");
   const hospitalNameChange = (e) => {
-    curhospitalName = e.target.value;
+    setcurhospitalName(e.target.value);
   };
   const hospitalAddressChange = (e) => {
-    curhospitalAddress = e.target.value;
+    setcurhospitalAddress(e.target.value);
   };
   const name1Change = (e) => {
-    curname1 = e.target.value;
+    setcurname1(e.target.value);
   };
   const email1Change = (e) => {
-    curemail1 = e.target.value;
+    setcuremail1(e.target.value);
   };
   const contactNo1Change = (e) => {
-    curcontactNo1 = e.target.value;
+    setcurcontactNo1(e.target.value);
   };
   const name2Change = (e) => {
-    curname2 = e.target.value;
+    setcurname2(e.target.value);
   };
   const email2Change = (e) => {
-    curemail2 = e.target.value;
+    setcuremail2(e.target.value);
   };
   const contactNo2Change = (e) => {
-    curcontactNo2 = e.target.value;
+    setcurcontactNo2(e.target.value);
   };
 
   const submitHandler = async () => {
     if (curhospitalName == "") {
-      alert("Enter Hospital Name");
       return;
     }
     if (curhospitalAddress == "") {
-      alert("Enter Hopsital Address");
       return;
     }
     if (curname1 == "") {
-      alert("Enter First Person Name");
       return;
     }
     if (curemail1 == "") {
-      alert("Enter First Person Email");
       return;
     }
     if (!isEmail(curemail1)) {
-      alert("First Person Email Invalid");
       return;
     }
     if (curcontactNo1 == "") {
-      alert("Enter First Person Contact No.");
       return;
     }
     if (!isMobilePhone(curcontactNo1)) {
-      alert("First Person Contact No. Invalid");
       return;
     }
     if (curname2 == "") {
-      alert("Enter Second Person Name");
       return;
     }
     if (curemail2 == "") {
-      alert("Enter Second Person Email");
       return;
     }
     if (!isEmail(curemail2)) {
-      alert("Second Person Email Invalid");
       return;
     }
     if (curcontactNo2 == "") {
-      alert("Enter Second Person Contact No.");
       return;
     }
     if (!isMobilePhone(curcontactNo2)) {
-      alert("Second Person Contact No. Invalid");
       return;
     }
     props.SetEditModal(false);
@@ -107,7 +95,7 @@ const HospitalEdit = (props) => {
       .catch((err) => {
         console.log(err);
       });
-    alert(`Hospital ${Hospital.hospitalName} Updated Sucessfully`);
+    // alert(`Hospital ${Hospital.hospitalName} Updated Sucessfully`);
   };
 
   return (
@@ -124,7 +112,12 @@ const HospitalEdit = (props) => {
         <div className="Edit-Title">Edit Hospital</div>
         <div className="HospitalEditBox">
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Name*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Hospital Name*</div>
+              {curhospitalName === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.hospitalName}
@@ -133,7 +126,12 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Address*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Hospital Address*</div>
+              {curhospitalAddress === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.hospitalAddress}
@@ -142,7 +140,12 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Name*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">First Person Name*</div>
+              {curname1 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.name1}
@@ -151,7 +154,15 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Email*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">First Person Email*</div>
+              {(curemail1 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isEmail(curemail1) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
+            </div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.email1}
@@ -160,8 +171,16 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">
-              First Person Contact No.*
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">
+                First Person Contact No.*
+              </div>
+              {(curcontactNo1 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isMobilePhone(curcontactNo1) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
             </div>
             <input
               className="HospitalEditEntryInput"
@@ -171,7 +190,13 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Name*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Second Person Name*</div>
+              {curname2 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
+
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.name2}
@@ -180,7 +205,15 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Email*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Second Person Email*</div>
+              {(curemail2 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isEmail(curemail2) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
+            </div>
             <input
               className="HospitalEditEntryInput"
               defaultValue={Hospital.email2}
@@ -189,8 +222,16 @@ const HospitalEdit = (props) => {
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">
-              Second Person Contact No.*
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">
+                Second Person Contact No.*
+              </div>
+              {(curcontactNo2 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isMobilePhone(curcontactNo2) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
             </div>
             <input
               className="HospitalEditEntryInput"
