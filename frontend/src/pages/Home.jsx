@@ -66,7 +66,7 @@ const Home = () => {
     if (PageNo != 1) setPageNo(PageNo - 1);
   };
   const PageNoDecs = () => {
-    setPageNo(max(0, PageNo - 3));
+    setPageNo(Math.max(1, PageNo - 3));
   };
 
   const PageNoInc = () => {
@@ -74,7 +74,7 @@ const Home = () => {
   };
 
   const PageNoIncs = () => {
-    setPageNo(min(totalPages, PageNo + 3));
+    setPageNo(Math.min(totalPages, PageNo + 3));
   };
 
   useEffect(() => {

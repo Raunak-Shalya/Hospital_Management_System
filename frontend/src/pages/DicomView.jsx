@@ -60,39 +60,45 @@ function ViewDicomPanel(props) {
         >
           <span>X</span>
         </div>
-        <div className="patient-detail-title">Patient Details</div>
-        <div className="Patient-Detail-Container">
-          <div className="Patient-Detail-Entry-container">
-            <div className="Patient-Detail-Entry1">Id:</div>
-            <div className="Patient-Detail-Entry21">{data[0]}</div>
-          </div>
-          <div className="Patient-Detail-Entry-container">
-            <div className="Patient-Detail-Entry1">Name:</div>
-            <div className="Patient-Detail-Entry22">{data[1]}</div>
-          </div>
-          <div className="Patient-Detail-Entry-container">
-            <div className="Patient-Detail-Entry1">Modality:</div>
-            <div className="Patient-Detail-Entry23">{data[2]}</div>
-          </div>
-          <div className="Patient-Detail-Entry-container">
-            <div className="Patient-Detail-Entry1">Study Date/Time:</div>
-            <div className="Patient-Detail-Entry24">{data[3]}</div>
-          </div>
-          <div className="Patient-Detail-Entry-container">
-            <div className="Patient-Detail-Entry1">Age:</div>
-            <div className="Patient-Detail-Entry25">{data[4]}</div>
-          </div>
-          <div className="Patient-Detail-Entry-container">
-            <div className="Patient-Detail-Entry1">Sex:</div>
-            <div className="Patient-Detail-Entry26">{data[5]}</div>
-          </div>
-          <div className="Patient-Detail-Entry-container">
-            <div className="Patient-Detail-Entry1">Birth Date/Time:</div>
-            <div className="Patient-Detail-Entry27">{data[6]}</div>
-          </div>
-        </div>
-        {cornerstoneInitialised && dicomID != -1 && (
-          <MyComponent dicomId={dicomID} />
+        {dicomID === -1 ? (
+          <div className="viewdicomerror">NO DICOM Present</div>
+        ) : (
+          <>
+            <div className="patient-detail-title">Patient Details</div>
+            <div className="Patient-Detail-Container">
+              <div className="Patient-Detail-Entry-container">
+                <div className="Patient-Detail-Entry1">Id:</div>
+                <div className="Patient-Detail-Entry21">{data[0]}</div>
+              </div>
+              <div className="Patient-Detail-Entry-container">
+                <div className="Patient-Detail-Entry1">Name:</div>
+                <div className="Patient-Detail-Entry22">{data[1]}</div>
+              </div>
+              <div className="Patient-Detail-Entry-container">
+                <div className="Patient-Detail-Entry1">Modality:</div>
+                <div className="Patient-Detail-Entry23">{data[2]}</div>
+              </div>
+              <div className="Patient-Detail-Entry-container">
+                <div className="Patient-Detail-Entry1">Study Date/Time:</div>
+                <div className="Patient-Detail-Entry24">{data[3]}</div>
+              </div>
+              <div className="Patient-Detail-Entry-container">
+                <div className="Patient-Detail-Entry1">Age:</div>
+                <div className="Patient-Detail-Entry25">{data[4]}</div>
+              </div>
+              <div className="Patient-Detail-Entry-container">
+                <div className="Patient-Detail-Entry1">Sex:</div>
+                <div className="Patient-Detail-Entry26">{data[5]}</div>
+              </div>
+              <div className="Patient-Detail-Entry-container">
+                <div className="Patient-Detail-Entry1">Birth Date/Time:</div>
+                <div className="Patient-Detail-Entry27">{data[6]}</div>
+              </div>
+            </div>
+            {cornerstoneInitialised && dicomID != -1 && (
+              <MyComponent dicomId={dicomID} />
+            )}
+          </>
         )}
       </div>
     </div>

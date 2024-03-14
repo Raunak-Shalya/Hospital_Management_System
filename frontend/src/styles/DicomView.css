@@ -117,3 +117,8 @@
   opacity: 0;
   transform: scale(0.1, 1);
 }
+.viewdicomerror {
+  text-align: center;
+  margin-top: 20%;
+  font-size: 20px;
+}
