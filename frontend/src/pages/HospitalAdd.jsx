@@ -1,101 +1,96 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "../styles/HospitalModal.css";
 import { isEmail, isMobilePhone } from "validator";
 
 const HospitalAdd = (props) => {
-  let Hospital = {
-    hospitalName: "",
-    hospitalAddress: "",
-    name1: "",
-    email1: "",
-    contactNo1: "",
-    name2: "",
-    email2: "",
-    contactNo2: "",
-  };
+  const [curhospitalName, setcurhospitalName] = useState("h");
+  const [curhospitalAddress, setcurhospitalAddress] = useState("h");
+  const [curname1, setcurname1] = useState("h");
+  const [curemail1, setcuremail1] = useState("h@gmail.com");
+  const [curcontactNo1, setcurcontactNo1] = useState("2414141");
+  const [curname2, setcurname2] = useState("h");
+  const [curemail2, setcuremail2] = useState("h@gmail.com");
+  const [curcontactNo2, setcurcontactNo2] = useState("24141414");
 
   const hospitalNameChange = (e) => {
-    Hospital.hospitalName = e.target.value;
+    setcurhospitalName(e.target.value);
   };
   const hospitalAddressChange = (e) => {
-    Hospital.hospitalAddress = e.target.value;
+    setcurhospitalAddress(e.target.value);
   };
   const name1Change = (e) => {
-    Hospital.name1 = e.target.value;
+    setcurname1(e.target.value);
   };
   const email1Change = (e) => {
-    Hospital.email1 = e.target.value;
+    setcuremail1(e.target.value);
   };
   const contactNo1Change = (e) => {
-    Hospital.contactNo1 = e.target.value;
+    setcurcontactNo1(e.target.value);
   };
   const name2Change = (e) => {
-    Hospital.name2 = e.target.value;
+    setcurname2(e.target.value);
   };
   const email2Change = (e) => {
-    Hospital.email2 = e.target.value;
+    setcuremail2(e.target.value);
   };
   const contactNo2Change = (e) => {
-    Hospital.contactNo2 = e.target.value;
+    setcurcontactNo2(e.target.value);
   };
 
   const submitHandler = () => {
-    if (Hospital.hospitalName == "") {
-      alert("Enter Hospital Name");
+    if (curhospitalName == "" || curhospitalName == "h") {
       return;
     }
-
-    if (Hospital.hospitalAddress == "") {
-      alert("Enter Hopsital Address");
+    if (curhospitalAddress == "") {
       return;
     }
-    if (Hospital.name1 == "") {
-      alert("Enter First Person Name");
+    if (curname1 == "") {
       return;
     }
-    if (Hospital.email1 == "") {
-      alert("Enter First Person Email");
+    if (curemail1 == "") {
       return;
     }
-    if (!isEmail(Hospital.email1)) {
-      alert("First Person Email Invalid");
+    if (!isEmail(curemail1)) {
       return;
     }
-    if (Hospital.contactNo1 == "") {
-      alert("Enter First Person Contact No.");
+    if (curcontactNo1 == "") {
       return;
     }
-    if (!isMobilePhone(Hospital.contactNo1)) {
-      alert("First Person Contact No. Invalid");
+    if (!isMobilePhone(curcontactNo1)) {
       return;
     }
-    if (Hospital.name2 == "") {
-      alert("Enter Second Person Name");
+    if (curname2 == "") {
       return;
     }
-    if (Hospital.email2 == "") {
-      alert("Enter Second Person Email");
+    if (curemail2 == "") {
       return;
     }
-    if (!isEmail(Hospital.email2)) {
-      alert("Second Person Email Invalid");
+    if (!isEmail(curemail2)) {
       return;
     }
-    if (Hospital.contactNo2 == "") {
-      alert("Enter Second Person Contact No.");
+    if (curcontactNo2 == "") {
       return;
     }
-    if (!isMobilePhone(Hospital.contactNo2)) {
-      alert("Second Person Contact No. Invalid");
+    if (!isMobilePhone(curcontactNo2)) {
       return;
     }
+    let Hospital = {
+      hospitalName: curhospitalName,
+      hospitalAddress: curhospitalAddress,
+      name1: curname1,
+      email1: curemail1,
+      contactNo1: curcontactNo1,
+      name2: curname2,
+      email2: curemail2,
+      contactNo2: curcontactNo2,
+    };
     props.setAddModal(false);
     try {
       axios.post(`http://localhost:8080/user/`, Hospital).catch((err) => {
         console.log(err);
       });
-      alert(`Hospital: ${Hospital.hospitalName} has been added`);
+      // alert(`Hospital: ${Hospital.hospitalName} has been added`);
       Hospital.id = props.Hospitals.length + 1;
       props.setHospitals([...props.Hospitals, Hospital]);
     } catch (e) {
@@ -116,77 +111,130 @@ const HospitalAdd = (props) => {
         <div className="Edit-Title">Add Hospital</div>
         <div className="HospitalEditBox">
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Name*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Hospital Name*</div>
+              {curhospitalName === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.hospitalName}
+              defaultValue={""}
               onChange={hospitalNameChange}
             ></input>
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Hospital Address*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Hospital Address*</div>
+              {curhospitalAddress === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.hospitalAddress}
+              defaultValue={""}
               onChange={hospitalAddressChange}
             ></input>
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Name*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">First Person Name*</div>
+              {curname1 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.name1}
+              defaultValue={""}
               onChange={name1Change}
             ></input>
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">First Person Email*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">First Person Email*</div>
+              {(curemail1 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isEmail(curemail1) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
+            </div>
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.email1}
+              defaultValue={""}
               onChange={email1Change}
             ></input>
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">
-              First Person Contact No.*
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">
+                First Person Contact No.*
+              </div>
+              {(curcontactNo1 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isMobilePhone(curcontactNo1) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
             </div>
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.contactNo1}
+              defaultValue={""}
               onChange={contactNo1Change}
             ></input>
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Name*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Second Person Name*</div>
+              {curname2 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )}
+            </div>
+
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.name2}
+              defaultValue={""}
               onChange={name2Change}
             ></input>
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">Second Person Email*</div>
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">Second Person Email*</div>
+              {(curemail2 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isEmail(curemail2) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
+            </div>
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.email2}
+              defaultValue={""}
               onChange={email2Change}
             ></input>
           </div>
 
           <div className="HospitalEditEntryBox">
-            <div className="HospitalEditEntryName">
-              Second Person Contact No.*
+            <div className="HospitalEditEntryTitle">
+              <div className="HospitalEditEntryName">
+                Second Person Contact No.*
+              </div>
+              {(curcontactNo2 === "" && (
+                <div className="ModalError">(Field Required)</div>
+              )) ||
+                (!isMobilePhone(curcontactNo2) && (
+                  <div className="ModalError">(Invalid Value)</div>
+                ))}
             </div>
             <input
               className="HospitalEditEntryInput"
-              defaultValue={Hospital.contactNo2}
+              defaultValue={""}
               onChange={contactNo2Change}
             ></input>
           </div>

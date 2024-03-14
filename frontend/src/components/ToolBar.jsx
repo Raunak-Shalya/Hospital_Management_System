@@ -61,7 +61,7 @@ const ToolBar = (props) => {
     props.setPageNo(1);
     props.setCurHospitals(
       props.CurHospitals.filter((h) =>
-        h.hospitalAddress.startsWith(SearchBoxAddress)
+        h.hospitalAddress.includes(SearchBoxAddress)
       )
     );
   };
