@@ -3,7 +3,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./index.css";
 import LoginPage from "./pages/LoginPage.jsx";
-import Protected from "./components/Protected.jsx";
 import Home from "./pages/Home.jsx";
 import HospitalEdit from "./pages/HospitalEdit";
 import HospitalAdd from "./pages/HospitalAdd";
@@ -13,7 +12,7 @@ function App() {
   const [auth, setauth] = useState(false);
   return (
     <div className="App">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route
             path="/login"
@@ -35,6 +34,15 @@ function App() {
             path="/view/*"
             element={auth ? <HospitalView /> : <Navigate to="/login" replace />}
           />
+        </Routes>
+      </BrowserRouter> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage setauth={setauth} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/Add/*" element={<HospitalAdd />} />
+          <Route path="/edit/*" element={<HospitalEdit />} />
+          <Route path="/view/*" element={<HospitalView />} />
         </Routes>
       </BrowserRouter>
     </div>

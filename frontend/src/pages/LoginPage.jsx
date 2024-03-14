@@ -23,7 +23,7 @@ const LoginPage = (props) => {
 
       console.log(response);
       if (response.data.result == "SUCCESS") {
-        localStorage.setItem("jwtToken", response.data.token);
+        // localStorage.setItem("jwtToken", response.data.token);
         await props.setauth(true);
         navigate("/");
       } else throw new Exception();

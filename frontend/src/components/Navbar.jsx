@@ -6,10 +6,12 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 import "../styles/NavBar.css";
+import axios from "axios";
 export default function NavBar() {
   const navigate = useNavigate();
+
   const LogoutHandler = () => {
-    localStorage.clear();
+    axios.post("http://localhost:8080/auth/deleteCookies");
     navigate("/login");
   };
   return (
