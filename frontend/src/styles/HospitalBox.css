@@ -17,7 +17,7 @@
   height: 100%;
   padding-top: 10px;
   text-align: start;
-  margin-left: 34px;
+  margin-left: 14px;
   user-select: none;
   line-height: 40px;
 }
@@ -26,7 +26,7 @@
   width: 150px;
   height: 100%;
   padding-top: 10px;
-  margin-left: 30px;
+  margin-left: 73px;
   text-align: left;
   user-select: none;
   line-height: 40px;
@@ -34,7 +34,7 @@
 .HospitalBoxEntry3 {
   font-size: 15px;
   width: 380px;
-  margin-left: 20px;
+  margin-left: 33px;
   height: 100%;
   padding-top: 10px;
   text-align: left;
@@ -43,8 +43,8 @@
 }
 .HospitalBoxEntry4 {
   font-size: 15px;
-  width: 150px;
-  margin-left: 20px;
+  width: 120px;
+  margin-left: 60px;
   height: 100%;
   padding-top: 10px;
   text-align: start;
@@ -53,8 +53,8 @@
 }
 .HospitalBoxEntry5 {
   font-size: 15px;
-  width: 150px;
-  margin-left: 20px;
+  width: 120px;
+  margin-left: 82px;
   height: 100%;
   padding-top: 10px;
   text-align: start;
@@ -62,11 +62,17 @@
   line-height: 40px;
 }
 
-.button-container {
+.button-container1 {
   display: flex;
   justify-content: space-around;
-  width: 220px;
-  margin-left: 32px;
+  width: 200px;
+  margin-left: 50px;
+}
+.button-container2 {
+  display: flex;
+  justify-content: space-around;
+  width: 200px;
+  margin-left: 10px;
 }
 
 .btn-one {

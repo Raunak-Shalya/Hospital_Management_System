@@ -43,6 +43,7 @@ const Home = () => {
   }, [Hospitals]);
   //Updating PageHospital onChange CurHospital
   useEffect(() => {
+    console.log("Page");
     startIndex = (PageNo - 1) * 9;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   }, [CurHospitals]);
@@ -61,6 +62,80 @@ const Home = () => {
       setPageHospitals(CurHospitals.slice(startIndex, endIndex));
     }
   }, [DisplayBy]);
+
+  //Sorting Functions
+
+  const ascsortid = () => {
+    setCurHospitals(CurHospitals.sort((a, b) => (a.id > b.id ? 1 : -1)));
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const dscsortid = () => {
+    setCurHospitals(CurHospitals.sort((a, b) => (a.id > b.id ? -1 : 1)));
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const ascsorthname = () => {
+    setCurHospitals(
+      CurHospitals.sort((a, b) => (a.hospitalName > b.hospitalName ? 1 : -1))
+    );
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const dscsorthname = () => {
+    setCurHospitals(
+      CurHospitals.sort((a, b) => (a.hospitalName > b.hospitalName ? -1 : 1))
+    );
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const ascsortad = () => {
+    setCurHospitals(
+      CurHospitals.sort((a, b) =>
+        a.hospitalAddress > b.hospitalAddress ? 1 : -1
+      )
+    );
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const dscsortad = () => {
+    setCurHospitals(
+      CurHospitals.sort((a, b) =>
+        a.hospitalAddress > b.hospitalAddress ? -1 : 1
+      )
+    );
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const ascsortname1 = () => {
+    setCurHospitals(CurHospitals.sort((a, b) => (a.name1 > b.name1 ? 1 : -1)));
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const dscsortname1 = () => {
+    setCurHospitals(CurHospitals.sort((a, b) => (a.name1 > b.name1 ? -1 : 1)));
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const ascsortname2 = () => {
+    setCurHospitals(CurHospitals.sort((a, b) => (a.name2 > b.name2 ? 1 : -1)));
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
+
+  const dscsortname2 = () => {
+    setCurHospitals(CurHospitals.sort((a, b) => (a.name2 > b.name2 ? -1 : 1)));
+    startIndex = (PageNo - 1) * 9;
+    setPageHospitals(CurHospitals.slice(startIndex, endIndex));
+  };
 
   const PageNoDec = () => {
     if (PageNo != 1) setPageNo(PageNo - 1);
@@ -100,10 +175,50 @@ const Home = () => {
         />
         <div className="ListTitles">
           <div className="Title1">ID</div>
+          <button className="uparrow1" onClick={ascsortid}>
+            {" "}
+            &#8593;{" "}
+          </button>
+          <button className="downarrow" onClick={dscsortid}>
+            {" "}
+            &#8595;{" "}
+          </button>
           <div className="Title2">Name</div>
+          <button className="uparrow2" onClick={ascsorthname}>
+            {" "}
+            &#8593;{" "}
+          </button>
+          <button className="downarrow" onClick={dscsorthname}>
+            {" "}
+            &#8595;{" "}
+          </button>
           <div className="Title3">Address</div>
+          <button className="uparrow3" onClick={ascsortad}>
+            {" "}
+            &#8593;{" "}
+          </button>
+          <button className="downarrow" onClick={dscsortad}>
+            {" "}
+            &#8595;{" "}
+          </button>
           <div className="Title4">First Person</div>
+          <button className="uparrow4" onClick={ascsortname1}>
+            {" "}
+            &#8593;{" "}
+          </button>
+          <button className="downarrow" onClick={dscsortname1}>
+            {" "}
+            &#8595;{" "}
+          </button>
           <div className="Title5">Second Person</div>
+          <button className="uparrow5" onClick={ascsortname2}>
+            {" "}
+            &#8593;{" "}
+          </button>
+          <button className="downarrow" onClick={dscsortname2}>
+            {" "}
+            &#8595;{" "}
+          </button>
           <div className="Title6">Hospital Details</div>
           <div className="Title7">DICOM</div>
         </div>

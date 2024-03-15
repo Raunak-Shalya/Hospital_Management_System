@@ -16,7 +16,7 @@ const HospitalBox = (props) => {
       <div className="HospitalBoxEntry3">{props.Hospital.hospitalAddress}</div>
       <div className="HospitalBoxEntry4">{props.Hospital.name1}</div>
       <div className="HospitalBoxEntry5">{props.Hospital.name2}</div>
-      <div className="button-container">
+      <div className="button-container1">
         <div
           className="btn btn-one"
           onClick={() => {
@@ -42,7 +42,7 @@ const HospitalBox = (props) => {
         )}
       </div>
 
-      <div className="button-container">
+      <div className="button-container2">
         <div
           className="btn btn-one"
           onClick={() => {
