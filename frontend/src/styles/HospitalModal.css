@@ -12,8 +12,9 @@
 }
 
 .View-Title {
-  margin-top: 20px;
+  margin-top: 5px;
   margin-left: 50px;
+  font-weight: 600;
   font-size: x-large;
   -ms-user-select: none;
   -webkit-user-select: none;
@@ -23,7 +24,11 @@
 .Edit-Title {
   margin-top: 20px;
   margin-left: 50px;
+  font-weight: 600;
   font-size: x-large;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .modalContainer {
   width: 35vw;

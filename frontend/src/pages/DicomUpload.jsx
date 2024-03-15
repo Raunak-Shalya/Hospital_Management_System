@@ -69,9 +69,10 @@ const DicomUpload = (props) => {
         >
           <span>X</span>
         </div>
+        <div className="UploadDicomTitle">Upload DICOM</div>
         <div className="DicomStatusBox">
           {ServerDicom == -1
-            ? "No Dicoms Present"
+            ? "No DICOM Present"
             : `DICOM already present; uploading will update the current file.`}
         </div>
         <form>

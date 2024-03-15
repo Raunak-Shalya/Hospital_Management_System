@@ -9,7 +9,7 @@
 }
 .DicomStatusBox {
   font-weight: 600;
-  margin-top: 40px;
+  margin-top: 22px;
   margin-left: 20px;
 }
 .Select-File-Button {
@@ -127,4 +127,10 @@
 .btn-one-upload-close:hover::after {
   opacity: 0;
   transform: scale(0.1, 1);
+}
+
+.UploadDicomTitle {
+  margin-left: 20px;
+  font-size: 25px;
+  font-weight: 600;
 }
