@@ -4,14 +4,14 @@ import "../styles/HospitalModal.css";
 import { isEmail, isMobilePhone } from "validator";
 
 const HospitalAdd = (props) => {
-  const [curhospitalName, setcurhospitalName] = useState("h");
-  const [curhospitalAddress, setcurhospitalAddress] = useState("h");
-  const [curname1, setcurname1] = useState("h");
-  const [curemail1, setcuremail1] = useState("h@gmail.com");
+  const [curhospitalName, setcurhospitalName] = useState("h123");
+  const [curhospitalAddress, setcurhospitalAddress] = useState("h123");
+  const [curname1, setcurname1] = useState("h123");
+  const [curemail1, setcuremail1] = useState("h123@gmail.com");
   const [curcontactNo1, setcurcontactNo1] = useState("2414141");
-  const [curname2, setcurname2] = useState("h");
-  const [curemail2, setcuremail2] = useState("h@gmail.com");
-  const [curcontactNo2, setcurcontactNo2] = useState("24141414");
+  const [curname2, setcurname2] = useState("h123");
+  const [curemail2, setcuremail2] = useState("h123@gmail.com");
+  const [curcontactNo2, setcurcontactNo2] = useState("2414141");
 
   const hospitalNameChange = (e) => {
     setcurhospitalName(e.target.value);
@@ -39,37 +39,46 @@ const HospitalAdd = (props) => {
   };
 
   const submitHandler = () => {
-    if (curhospitalName == "" || curhospitalName == "h") {
+    if (curhospitalName == "h123") setcurhospitalName("");
+    if (curhospitalAddress == "h123") setcurhospitalAddress("");
+    if (curname1 == "h123") setcurname1("");
+    if (curname2 == "h123") setcurname2("");
+    if (curcontactNo1 == "2414141") setcurcontactNo1("");
+    if (curcontactNo2 == "2414141") setcurcontactNo2("");
+    if (curemail1 == "h123@gmail.com") setcuremail1("");
+    if (curemail2 == "h123@gmail.com") setcuremail2("");
+
+    if (curhospitalName == "" || curhospitalName == "h123") {
       return;
     }
-    if (curhospitalAddress == "") {
+    if (curhospitalAddress == "" || curhospitalAddress == "h123") {
       return;
     }
-    if (curname1 == "") {
+    if (curname1 == "" || curname1 == "h123") {
       return;
     }
-    if (curemail1 == "") {
+    if (curemail1 == "" || curemail1 == "h123@gmail.com") {
       return;
     }
     if (!isEmail(curemail1)) {
       return;
     }
-    if (curcontactNo1 == "") {
+    if (curcontactNo1 == "" || curcontactNo1 == "2414141") {
       return;
     }
     if (!isMobilePhone(curcontactNo1)) {
       return;
     }
-    if (curname2 == "") {
+    if (curname2 == "" || curname2 == "h123") {
       return;
     }
-    if (curemail2 == "") {
+    if (curemail2 == "" || curemail2 == "h123@gmail.com") {
       return;
     }
     if (!isEmail(curemail2)) {
       return;
     }
-    if (curcontactNo2 == "") {
+    if (curcontactNo2 == "" || curcontactNo2 == "2414141") {
       return;
     }
     if (!isMobilePhone(curcontactNo2)) {

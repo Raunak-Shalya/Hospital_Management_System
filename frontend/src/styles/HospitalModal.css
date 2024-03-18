@@ -31,7 +31,7 @@
   user-select: none;
 }
 .modalContainer {
-  width: 35vw;
+  width: 25vw;
   height: 90vh;
   background-color: #0f1117;
   margin: auto;
@@ -40,7 +40,7 @@
   position: absolute;
 }
 .ViewmodalContainer {
-  width: 35vw;
+  width: 25vw;
   height: 85vh;
   background-color: #0f1117;
   margin: auto;
