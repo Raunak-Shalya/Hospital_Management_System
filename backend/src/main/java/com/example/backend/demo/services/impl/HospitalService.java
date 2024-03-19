@@ -83,5 +83,36 @@ public class HospitalService {
 		List<Hospital> val = hospitalRepo.findByIDStartsWith(query);
 		return val;
 	}
-	
+
+	//Searching Functions
+	public List<Hospital> filter_hospital_by_id(String id,int pageNumber,int pageSize){
+		Pageable pageable = PageRequest.of(pageNumber,pageSize);
+		Page<Hospital> myPage=hospitalRepo.findByHospitalId(id,pageable);
+		List<Hospital> hospital_list=myPage.getContent();
+		return hospital_list;
+	}
+	public List<Hospital> filter_hospital_by_name(String name,int pageNumber,int pageSize){
+		Pageable pageable = PageRequest.of(pageNumber,pageSize);
+		Page<Hospital> myPage=hospitalRepo.findByHospitalName(name,pageable);
+		List<Hospital> hospital_list=myPage.getContent();
+		return hospital_list;
+	}
+	public List<Hospital> filter_hospital_by_address(String address,int pageNumber,int pageSize){
+		Pageable pageable = PageRequest.of(pageNumber,pageSize);
+		Page<Hospital> myPage=hospitalRepo.findByHospitalAddress(address,pageable);
+		List<Hospital> hospital_list=myPage.getContent();
+		return hospital_list;
+	}
+	public List<Hospital> filter_hospital_by_name1(String name1,int pageNumber,int pageSize){
+		Pageable pageable = PageRequest.of(pageNumber,pageSize);
+		Page<Hospital> myPage=hospitalRepo.findByHospitalName1(name1,pageable);
+		List<Hospital> hospital_list=myPage.getContent();
+		return hospital_list;
+	}
+	public List<Hospital> filter_hospital_by_name2(String name2,int pageNumber,int pageSize){
+		Pageable pageable = PageRequest.of(pageNumber,pageSize);
+		Page<Hospital> myPage=hospitalRepo.findByHospitalName2(name2,pageable);
+		List<Hospital> hospital_list=myPage.getContent();
+		return hospital_list;
+	}
 }

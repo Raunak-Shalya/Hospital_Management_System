@@ -4,6 +4,7 @@ import NavBar from "../components/Navbar";
 import axios from "axios";
 import HospitalBox from "../components/HospitalBox";
 import ToolBar from "../components/ToolBar";
+import { PageSizeSelector } from "../components/PageSizeSelector";
 const baseURL = "http://localhost:8080";
 
 axios.defaults.withCredentials = true;
@@ -12,15 +13,16 @@ const Home = () => {
   const [Hospitals, setHospitals] = useState([]);
   const [DisplayBy, setDisplayBy] = useState("Id");
   const [PageNo, setPageNo] = useState(1);
+  const [PageSize, setPageSize] = useState(10);
   const [Added, setAdded] = useState(0);
   let refresh = false;
 
   const [CurHospitals, setCurHospitals] = useState([]);
   const [PageHospitals, setPageHospitals] = useState([]);
   //Variables for Implementing Pagination
-  const totalPages = Math.ceil(Hospitals.length / 9);
-  let startIndex = (PageNo - 1) * 9;
-  let endIndex = startIndex + 9;
+  const totalPages = Math.ceil(Hospitals.length / PageSize);
+  let startIndex = (PageNo - 1) * PageSize;
+  let endIndex = startIndex + PageSize;
 
   //Axios call to Backend for Fetching Data
   useEffect(() => {
@@ -44,7 +46,7 @@ const Home = () => {
   //Updating PageHospital onChange CurHospital
   useEffect(() => {
     console.log("Page");
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   }, [CurHospitals]);
 
@@ -67,13 +69,13 @@ const Home = () => {
 
   const ascsortid = () => {
     setCurHospitals(CurHospitals.sort((a, b) => (a.id > b.id ? 1 : -1)));
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
   const dscsortid = () => {
     setCurHospitals(CurHospitals.sort((a, b) => (a.id > b.id ? -1 : 1)));
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
@@ -81,7 +83,7 @@ const Home = () => {
     setCurHospitals(
       CurHospitals.sort((a, b) => (a.hospitalName > b.hospitalName ? 1 : -1))
     );
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
@@ -89,7 +91,7 @@ const Home = () => {
     setCurHospitals(
       CurHospitals.sort((a, b) => (a.hospitalName > b.hospitalName ? -1 : 1))
     );
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
@@ -99,7 +101,7 @@ const Home = () => {
         a.hospitalAddress > b.hospitalAddress ? 1 : -1
       )
     );
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
@@ -109,31 +111,31 @@ const Home = () => {
         a.hospitalAddress > b.hospitalAddress ? -1 : 1
       )
     );
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
   const ascsortname1 = () => {
     setCurHospitals(CurHospitals.sort((a, b) => (a.name1 > b.name1 ? 1 : -1)));
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
   const dscsortname1 = () => {
     setCurHospitals(CurHospitals.sort((a, b) => (a.name1 > b.name1 ? -1 : 1)));
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
   const ascsortname2 = () => {
     setCurHospitals(CurHospitals.sort((a, b) => (a.name2 > b.name2 ? 1 : -1)));
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
   const dscsortname2 = () => {
     setCurHospitals(CurHospitals.sort((a, b) => (a.name2 > b.name2 ? -1 : 1)));
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
   };
 
@@ -145,7 +147,8 @@ const Home = () => {
   };
 
   const PageNoInc = () => {
-    if (PageNo != Math.ceil(CurHospitals.length / 9)) setPageNo(PageNo + 1);
+    if (PageNo != Math.ceil(CurHospitals.length / PageSize))
+      setPageNo(PageNo + 1);
   };
 
   const PageNoIncs = () => {
@@ -153,9 +156,9 @@ const Home = () => {
   };
 
   useEffect(() => {
-    startIndex = (PageNo - 1) * 9;
+    startIndex = (PageNo - 1) * PageSize;
     setPageHospitals(CurHospitals.slice(startIndex, endIndex));
-  }, [PageNo]);
+  }, [PageNo, PageSize]);
 
   return (
     <div className="box">
@@ -244,6 +247,11 @@ const Home = () => {
           <div className="btn btn-one" onClick={PageNoIncs}>
             <span>&gt;&gt;&gt;</span>
           </div>
+          <PageSizeSelector
+            PageSize={PageSize}
+            setPageSize={setPageSize}
+            setPageNo={setPageNo}
+          />
         </div>
       </div>
     </div>

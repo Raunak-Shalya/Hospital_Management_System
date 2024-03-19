@@ -1,7 +1,6 @@
 .ToolBarComponent {
   display: flex;
   justify-content: space-between;
-  padding-top: 2%;
 }
 .SearchComponent {
   height: 80px;

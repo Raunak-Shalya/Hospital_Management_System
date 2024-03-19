@@ -61,12 +61,12 @@ public class UserController {
     }
 
     @GetMapping("/sortByName")
-    public List<Hospital> findAllRadiologistsSortedByNameAsc() {
+    public List<Hospital> findAllhospitalSortedByNameAsc() {
         return hospitalService.findAllHospitalSortedByNameAsc();
     }
 
     @GetMapping("/sortById")
-    public List<Hospital> findAllRadiologistsSortedByNameId() {
+    public List<Hospital> findAllhospitalSortedByNameId() {
         return hospitalService.findAllHospitalSortedByNameId();
     }
     @GetMapping("/SearchByName")
@@ -102,6 +102,39 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+
+
+    //Searching and Sorting APIs
+
+    @GetMapping(value="/filter-by-hospital-id")
+    public List<Hospital> filter_hospital_by_id(@RequestParam("id") String id_of_hospital, @RequestParam(value="pageNumber",defaultValue = "0",required = false)int pageNumber,
+                                          @RequestParam(value="pageSize",defaultValue="6",required=false)int pageSize){
+        return (List<Hospital>)hospitalService.filter_hospital_by_id(id_of_hospital,pageNumber,pageSize);
+    }
+    @GetMapping(value="/filter-by-hospital-name")
+    public List<Hospital> filter_hospital_by_name(@RequestParam("name") String name_of_hospital, @RequestParam(value="pageNumber",defaultValue = "0",required = false)int pageNumber,
+                                                 @RequestParam(value="pageSize",defaultValue="6",required=false)int pageSize){
+        return (List<Hospital>)hospitalService.filter_hospital_by_name(name_of_hospital,pageNumber,pageSize);
+    }
+    @GetMapping(value="/filter-by-address")
+    public List<Hospital>  filter_hospital_by_address(@RequestParam ("address") String address_of_hospital, @RequestParam(value="pageNumber",defaultValue = "0",required = false)int pageNumber,
+                                                           @RequestParam(value="pageSize",defaultValue="6",required=false)int pageSize){
+        return (List<Hospital>) hospitalService.filter_hospital_by_address(address_of_hospital,pageNumber,pageSize);
+    }
+    @GetMapping(value="/filter-by-name1")
+    public List<Hospital>  filter_hospital_by_name1(@RequestParam ("name1") String name1, @RequestParam(value="pageNumber",defaultValue = "0",required = false)int pageNumber,
+                                                             @RequestParam(value="pageSize",defaultValue="6",required=false)int pageSize){
+        return (List<Hospital>) hospitalService.filter_hospital_by_name1(name1,pageNumber,pageSize);
+    }
+    @GetMapping(value="/filter-by-name2")
+    public List<Hospital>  filter_hospital_by_name2(@RequestParam ("name2") String name2, @RequestParam(value="pageNumber",defaultValue = "0",required = false)int pageNumber,
+                                                      @RequestParam(value="pageSize",defaultValue="6",required=false)int pageSize){
+        return (List<Hospital>) hospitalService.filter_hospital_by_name2(name2,pageNumber,pageSize);
+    }
+
+
+
 
 
 
